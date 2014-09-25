@@ -1,0 +1,21 @@
+{
+    "name": "smartdoc",
+    "version": "0.0.1",
+    "description": "",
+    "main": "lib/main.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": {
+        "name": "Roy Zhang",
+        "email": "zhh77_1999@163.com"
+    },
+    "license": "BSD",
+    "dependencies": {
+        "yuidocjs": "0.3.45",
+        "express": "~3.1.2"
+    },
+    "devDependencies": {
+        "jshint": "2.4.x"
+    }
+}

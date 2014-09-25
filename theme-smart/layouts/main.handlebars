@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{{htmlTitle}}</title>
+  
+    <link rel="stylesheet" href="{{projectAssets}}/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="{{projectAssets}}/css/main.css" id="site_styles">
+    <link rel="stylesheet" href="{{projectAssets}}/vendor/bootstrap/css/bootstrap.css">
+    <link rel="shortcut icon" type="image/png" href="{{projectAssets}}/favicon.png">
+</head>
+<body class="yui3-smart">
+ <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+               <a class="navbar-brand" href="{{projectUrl}}">
+             {{#if projectLogo}}
+            <img alt="{{projectName}}" src="{{projectLogo}}" style="max-height: 65%;" title="{{projectName}}">
+            {{else}}
+            <img alt="{{projectName}}" src="{{projectAssets}}/css/logo.png" style="max-height: 65%;" title="{{projectName}}">
+            {{/if}}
+                {{projectName}}
+          </a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                 <ul class="nav navbar-nav">
+                    {{#projectNavs}}
+                    <li><a href="{{url}}">{{name}}</a>
+                    </li>
+                    {{/projectNavs}}
+                </ul>
+               <!--  <form class="navbar-form navbar-right" role="form">
+                <input type="text" class="form-control search-query" placeholder="Search for classes/modules..." data-obj='[{{#search classes allModules}}{{/search}}]'>
+                </form> -->
+            </div>
+        </div>
+    </nav>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3">
+	    {{>sidebar}}
+        </div>
+        <div class="col-sm-9">
+            <!-- {{>options}} -->
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        {{>layout_content}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<a id="gotoTop" class='well well-small' href='#'>
+    Top
+</a>
+<script src="{{projectAssets}}/vendor/jquery/jquery-1.8.2.min.js"></script>
+<script src="{{projectAssets}}/vendor/bootstrap/js/bootstrap.js"></script>
+<script src="{{projectAssets}}/vendor/prettify/prettify-min.js"></script>
+<script src="{{projectAssets}}/js/yuidoc-bootstrap.js"></script>
+<script>prettyPrint();</script>
+</body>
+</html>

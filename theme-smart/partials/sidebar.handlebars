@@ -1,0 +1,22 @@
+<div id="sidebar">
+    <h3>APIs</h3>
+        <div id="api-tabview-filter">
+            <input id='txtSearch' type="search" class="form-control" placeholder="Type to filter APIs">
+        </div>
+        <dl>
+             {{#modules}}
+                <dt>
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <a href="{{../projectRoot}}modules/{{name}}.html">{{displayName}}</a>
+                </dt>
+                <dd class="hide">
+                    <ul>
+                   {{#classes}}
+                       <li><a href="{{../../projectRoot}}classes/{{name}}.html">{{name}}</a></li>
+                    {{/classes}}
+                    </ul>
+                </dd>
+             {{/modules}}
+        </dl>
+</div>
+   
