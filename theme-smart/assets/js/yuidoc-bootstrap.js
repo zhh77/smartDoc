@@ -54,7 +54,13 @@ $(function() {
         }
     }
 
-    // setUpWidgets();
+     $('[data-tabid]').on('click', function(event) {
+        var tabToActivate = $(this).attr('data-tabid'),
+            anchor = $(this).attr('data-anchor');
+        event.preventDefault();
+        $('[data-toggle=tab][href="' + tabToActivate + '"]').click();
+        $(document).scrollTop($(anchor).offset().top);
+    });
 
     /* 代码行定位 */
     (function() {

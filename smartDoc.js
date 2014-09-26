@@ -1,8 +1,10 @@
 'use strict';
 
-module.exports = function(config,callback) {
+exports.build = function(config,callback) {
     var Y = require('yuidocjs');
     var fs = require("fs");
+    var path = require('path');
+    var dir = path.dirname(fs.realpathSync(__filename))+"/";
 
     extendYUIDoc();
 
@@ -22,8 +24,8 @@ module.exports = function(config,callback) {
             return;
         }
         options = Y.mix(options,{
-            themedir: 'theme-smart/',
-            helpers: ["theme-smart/helpers/helpers.js"]
+            themedir: dir + 'theme-smart/',
+            helpers: [dir + "theme-smart/helpers/helpers.js"]
         });
 
         try {
@@ -47,18 +49,7 @@ module.exports = function(config,callback) {
     function addDemoLib(options,demoLibs){
          if(demoLibs && demoLibs.length){
             var scripts = "<script src='" + demoLibs.join("'></script><script src='") + "'></script>";
-            // fs.open("./" + options.outdir + '/assets/demo.html',"a",function(e,fd){
-            //     if(e) 
-            //         throw e;
-
-            //     fs.write(fd,scripts,function(e){
-            //         if(e) 
-            //             throw e;
-
-            //         fs.closeSync(fd);
-            //     })
-            // });
-            fs.appendFile("./" + options.outdir + '/assets/demo.html',scripts);
+            fs.appendFile(options.outdir + '/assets/demo.html',scripts);
          }
     }
 

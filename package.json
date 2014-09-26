@@ -1,7 +1,8 @@
 {
     "name": "smartdoc",
-    "version": "0.0.1",
-    "description": "",
+    "version": "0.0.2",
+    "description": "Javascript Document & Demo builder (base on YUIDoc and bootstrap 3).",
+    "homepage": "https://github.com/zhh77/smartDoc",
     "main": "lib/main.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,6 +11,13 @@
         "name": "Roy Zhang",
         "email": "zhh77_1999@163.com"
     },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/zhh77/smartDoc.git"
+    },
+    "bugs": {
+        "url": "https://github.com/zhh77/smartDoc/issues"
+    },
     "license": "BSD",
     "dependencies": {
         "yuidocjs": "0.3.45",
@@ -17,5 +25,8 @@
     },
     "devDependencies": {
         "jshint": "2.4.x"
+    },
+    "bin" : {
+        "smartDoc": "./bin/smartDoc"
     }
 }
