@@ -9,27 +9,6 @@ body {
 	margin-right: 5px;
 	font-weight: bold;
 }
-#show {
-	margin : 5px 10px;
-}
-#logs {
-	margin : 5px 10px;
-	font-size : 10px;
-}
-#logs li {
-	margin : 5px;
-	padding : 5px;
-}
-#logs p {
-	margin : 0;
-}
-#logs li.success {
-	background-color: #a6e22e;
-}
-#logs li.fail {
-	background-color: #f92672;
-}
-
 .htmlInput .CodeMirror{
 	height : 200px;
 }
@@ -61,4 +40,9 @@ body {
 }
 .jsInput .CodeMirror:before {
 	content : "JS";
+}
+#render {
+	border-width : 0;
+	width : 100%;
+	height : 350px;
 }

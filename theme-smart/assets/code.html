@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="codemirror/addon/hint/show-hint.css">
 
     <link rel="stylesheet" href="css/codeDemo.css">
+    <LINK href="favicon.png" type="image/x-icon" rel=icon> 
 
     <script src="codemirror/lib/codemirror.js"></script>
 
@@ -47,7 +48,7 @@
 
     <script src="vendor/jquery/jquery-1.8.2.min.js"></script>
 
-    <script src="js/codeDemo.js"></script>
+    
 
 </head>
 
@@ -69,8 +70,8 @@
                <div class="code-toolbar">
                     <button id='btnRun' class="btn btn-success">Run</button>
                     <button id='btnReset' class="btn btn-success">Reset</button>
+                    <button id='btnOpen' class="btn btn-success">View In New Window</button>
                </div> 
-
             </div>
         </div>
     </nav>
@@ -94,24 +95,13 @@
                         <li>使用log可以打印结果；例如：log(result');</li>
                 </div>
                 </ul>
-                <div class="panel panel-default">
-                    <div class="panel-heading">Html Render</div>
-                    <div class="panel-body">
-                        <div id='show'></div>
-                    </div>
-                </div>
-                <div class="panel panel-warning">
-                    <div class="panel-heading">Logs</div>
-                    <div class="panel-body">
-                        <div id='show'></div>
-                        <ol id='logs'>
-
-                        </ol>
-                    </div>
-                </div>
+                <h2>Result</h2>
+                <iframe id="render">
+                </iframe>
             </div>
         </div>
     </div>
 </body>
 
 </html>
+<script src="js/code.js"></script>

@@ -2,6 +2,9 @@ body.yui3-smart {
     padding : 50px 0;
     font-family: 'Helvetica Neue', Helvetica, 'Microsoft Yahei', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', sans-serif;
 }
+body.yui3-smart .mainlogo {
+    padding: 8px 15px;
+}
 .hide {
     display: none;
 }
@@ -54,8 +57,8 @@ body.yui3-smart {
 #sidebar a:hover,#sidebar .active {
     color:#c7254e;
 }
-.btn-runDemo {
-    margin-top : 10px;
+.example-content {
+    margin-bottom : 10px;
 }
 .yui3-smart .sign-left1 {
     border-left : 5px #d9534f solid;

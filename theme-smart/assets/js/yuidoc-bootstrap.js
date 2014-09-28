@@ -83,10 +83,13 @@ $(function() {
     })();
 
     (function() {
-        $('.btn-runDemo').click(function() {
+        $('.btn-viewDemo').click(function(){
+             var code = $(this).prev().text().trim();
+            window.open('../assets/show.html', code);
+        }).next().click(function() {
             var btn = $(this),
-                code = btn.prev().text().trim();
-            window.open('../assets/demo.html?n=' +  btn.parent().parent().children(':first').text(), code);
+                code = btn.prev().prev().text().trim();
+            window.open('../assets/code.html?n=' +  btn.parent().parent().children(':first').text(), code);
         })
     })();
 });
