@@ -1,9 +1,9 @@
 {
     "name": "smartdoc",
-    "version": "0.0.5",
+    "version": "0.0.7",
     "description": "Javascript Document & Demo builder (base on YUIDoc and bootstrap 3).",
     "homepage": "https://github.com/zhh77/smartDoc",
-    "main": "lib/main.js",
+    "main": "smartDoc.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },

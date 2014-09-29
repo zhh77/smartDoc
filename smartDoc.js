@@ -26,6 +26,8 @@ exports.build = function(config, callback) {
             return;
         }
         options = Y.mix(options, {
+            paths: ['src/'],
+            outdir: 'doc/',
             themedir: themeDir,
             helpers: [themeDir + "helpers/helpers.js"]
         });
@@ -40,11 +42,14 @@ exports.build = function(config, callback) {
 
         var builder = new Y.DocBuilder(options, json);
         var starttime = Date.now();
-        console.log('Start YUIDoc compile...');
+        console.log('Start SmartDoc compile...');
+        console.log('Scanning: ' + options.paths);
+        console.log('Output: ' + (options.outdir).cyan);
+
         builder.compile(function() {
             builder.writeDemo(function() {
                 callback && callback();
-                console.log('YUIDoc compile completed in ' + ((Date.now() - starttime) / 1000) + ' seconds');
+                console.log('SmartDoc compile completed in ' + ((Date.now() - starttime) / 1000) + ' seconds');
             });
         });
     }

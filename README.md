@@ -1,4 +1,4 @@
-SmartDoc 0.0.5
+SmartDoc
 ======================
 
 基于YUIDoc构建的Javascipt文档生成器。 
@@ -10,19 +10,18 @@ SmartDoc 0.0.5
     * 提供在线的demo编辑页面（类似于jsfiddler）
     * 可以配置化增强 - 项目信息配置；Document页面导航配置；demo依赖库配置
     * modules和classes结构化，筛选更加便利
-
+    * 提供grunt插件 - grunt-contrib-smartdoc
 
 使用
 --------------------
+在目录中加入docConfig.js文件
 
     npm install -g smartdoc
     smartdoc
 
 
-配置项
+docConfig配置项说明
 ---------------------
-在目录中加入docConfig.js文件
-
 
     module.exports = {
         //扫描的文件路径
