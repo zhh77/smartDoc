@@ -8,8 +8,9 @@ SmartDoc
     * 基于Bootstrp3构建，排版和样式美化
     * 支持html和js的Demo生成,与查看
     * 提供在线的demo编辑页面（类似于jsfiddler）
+    * 同步jasmine的expect接口，使得单元测试与example的代码能够复用
     * 可以配置化增强 - 项目信息配置；Document页面导航配置；demo依赖库配置
-    * modules和classes结构化，筛选更加便利
+    * 提供全局api查询和导航过滤功能，筛选更加便利
     * 提供grunt插件 - grunt-contrib-smartdoc
 
 使用
@@ -59,14 +60,17 @@ docConfig配置项说明
             }]
         },
 
-        //demo展示页面需要加载的资源； 资源只能是css和js文件
-        demoLibs: {
-
+        //demo展示页面配置；需要加载的资源； 资源只能是css和js文件
+        demo: {
+            
             //外部资源链接
             link : ['http://code.jquery.com/jquery-1.11.0.min.js'],
 
             //文件复制路径; 将目下的资源复制到doc生成目录中，并在deom页面引用
             paths : ['input/ui/uicode.js','input/']
+
+            //是否开启在code编辑器中的自动完成功能(会将link和paths的引入加入)；默认开启；
+            autoComplete : true
         },
 
         //自定义主题路径

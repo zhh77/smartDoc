@@ -5,6 +5,20 @@ body.yui3-smart {
 body.yui3-smart .mainlogo {
     padding: 8px 15px;
 }
+div.filterAPi {
+    margin-right : 0 !important;
+    position: relative;
+}
+#filterList {
+    right : 15px;
+    min-width: 196px;
+}
+#filterList em {
+    color: #428bca;
+}
+#filterList .active em {
+    color : #fff;
+}
 .hide {
     display: none;
 }
@@ -87,7 +101,9 @@ body.yui3-smart .mainlogo {
     left : 28px;
     border-radius: 10px;
 }
-
+.tab-pane .classDetail {
+    margin-top : 20px;
+}
 
 .apidocs { zoom: 1; }
 

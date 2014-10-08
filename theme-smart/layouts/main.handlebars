@@ -35,9 +35,10 @@
                     </li>
                     {{/projectNavs}}
                 </ul>
-               <!--  <form class="navbar-form navbar-right" role="form">
-                <input type="text" class="form-control search-query" placeholder="Search for classes/modules..." data-obj='[{{#search classes allModules}}{{/search}}]'>
-                </form> -->
+               <div class="navbar-form navbar-right filterAPi" autocomplete="off">
+                <input type="text" id='txtSearchAPI' class="form-control search-query" placeholder="Search for API" />
+                 <ul id="filterList" class="filterItems dropdown-menu" role="menu"></ul>
+                </div>
             </div>
         </div>
     </nav>
@@ -64,7 +65,7 @@
 <script src="{{projectAssets}}/vendor/jquery/jquery-1.8.2.min.js"></script>
 <script src="{{projectAssets}}/vendor/bootstrap/js/bootstrap.min.js"></script>
 <script src="{{projectAssets}}/vendor/prettify/prettify-min.js"></script>
-<script src="{{projectAssets}}/js/yuidoc-bootstrap.js"></script>
-<script>prettyPrint();</script>
+<script src="{{projectAssets}}/js/config.js"></script>
+<script src="{{projectAssets}}/js/doc.js"></script>
 </body>
 </html>

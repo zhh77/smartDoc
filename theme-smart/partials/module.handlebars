@@ -2,7 +2,7 @@
     <h1>{{name}} <small>Module</small></h1>
 </div>
 
-<div class="clearfix well well-small">
+<div class="clearfix well well-small sign-left1">
     {{#extra}}
         {{#selleck}}
             <a class="button link-docs" href="/yui/docs/{{name}}">User Guide &amp; Examples</a>
@@ -32,7 +32,7 @@
 </div>
 
 {{#if deprecated}}
-    <div class="well well-small">
+    <div class="well well-small sign-left2">
         <p>
         {{#if deprecationMessage}}
             <strong>Deprecated:</strong> {{deprecationMessage}}
@@ -43,7 +43,7 @@
     </div>
 {{/if}}
 
-<div class="moduledesc well well-small">
+<div class="moduledesc well well-small sign-left3">
     {{{moduleDescription}}}
 </div>
 

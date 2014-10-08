@@ -1,14 +1,43 @@
 (function() {
-    var logs = document.getElementById('logs');
+    var logs = document.getElementById('__logs');
 
     window.__st_render = function (html,code) {
-        html && (document.getElementById('show').innerHTML = html);
+        html && (document.getElementById('__show').innerHTML = html);
         logs.innerHTML = '';
 
         if(code){
-             eval('(function (){ try {' + code + "} catch(e) { alert(e); } })();")
+             eval('(function (){  \r\n try { \r\n' + code + "\r\n} \r\n catch(e) {\r\n __showErr(e); \r\n} \r\n})();")
         }
     }
+
+    function __showErr(e){
+        //ff下错误行捕获
+        if(e.lineNumber){
+            alert(e.message + '\n  at JS ' + e.lineNumber);
+            return;
+        }
+        else {
+            var stack = e.stack;
+            if(stack)
+            {
+                var arr = stack.split('\n'),
+                    msg = arr[0],
+                    code = arr[1];
+
+                var index = code.lastIndexOf(':');
+                index = code.lastIndexOf(':',--index);
+                if(index > 0){
+                    var lines = code.substring(index + 1,code.length - 1).split(':');
+                    lines[0] = lines[0] * 1 - 2;
+                    alert(msg + '\n  at JS ' + lines.join(':'));
+                    return;
+                }
+            }
+        }
+        
+        alert(e);
+    }
+
     function expect(result) {
         return new Tester(result);
     }
@@ -26,7 +55,7 @@
             check(this, expectResult, this.ret == expectResult);
         },
         toBeDefined: function() {
-            check(this, undefined, this.ret !== undefined);
+            check(this, 'defined', this.ret !== undefined);
         },
         toBeUndefined: function() {
             check(this, undefined);
@@ -58,8 +87,17 @@
         addLi(html,success ? 'success' : 'fail')
     }
 
-    function log(result) {
-        addLi('<p><b>log : </b>' + result + '</p>');
+    function log() {
+        var item,args = arguments,i =0,len = args.length,result = [];
+        for(;i < len; i++){
+            item = args[i];
+            if(item && typeof item === 'object' && window.JSON)
+                item = window.JSON.stringify(item);
+
+            result.push(item);
+        }
+
+        addLi('<p><b>log : </b>' + result.join(' , ') + '</p>');
     }
 
     function addLi(html,css){

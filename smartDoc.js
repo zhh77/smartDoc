@@ -41,12 +41,16 @@ exports.build = function(config, callback) {
         options = Y.Project.mix(json, options);
 
         var builder = new Y.DocBuilder(options, json);
+       
+
         var starttime = Date.now();
         console.log('Start SmartDoc compile...');
         console.log('Scanning: ' + options.paths);
-        console.log('Output: ' + (options.outdir).cyan);
+        console.log('Output: ' + options.outdir);
 
         builder.compile(function() {
+            buildDocConfig(builder.data,builder._meta,options);
+
             builder.writeDemo(function() {
                 callback && callback();
                 console.log('SmartDoc compile completed in ' + ((Date.now() - starttime) / 1000) + ' seconds');
@@ -54,11 +58,44 @@ exports.build = function(config, callback) {
         });
     }
 
+    function buildDocConfig(data,meta,options) {
+        var items = [];
+
+        Y.each(data.modules, function(item) {
+            item.name && items.push({
+                type: 'module',
+                name: item.name
+            });
+        });
+
+        Y.each(data.classes, function(item) {
+            item.name && items.push({
+                type: 'class',
+                name: item.name
+            });
+        })
+
+        data.classitems.forEach(function(item) {
+            item.name && items.push({
+                type: item.itemtype,
+                className : item['class'],
+                name: item.name
+            });
+        })
+
+        var config = {
+            filterItems : items
+        }
+
+        fs.appendFileSync(options.outdir + 'assets/js/config.js', "window['__docConfig'] = " + JSON.stringify(config)) + ";";
+    }
+
     function extendYUIDoc() {
         Y.DocBuilder.prototype.populateModules = function(opts) {
             var self = this;
             opts.meta.modules = [];
             opts.meta.allModules = [];
+
             Y.each(this.data.modules, function(v) {
                 if (v.external) {
                     return;
@@ -71,6 +108,7 @@ exports.build = function(config, callback) {
                         name: cName
                     });
                 }
+
                 opts.meta.allModules.push({
                     displayName: v.displayName || v.name,
                     name: self.filterFileName(v.name),
@@ -139,7 +177,7 @@ exports.build = function(config, callback) {
         Y.prepare([themeDir, themeDir], builder.getProjectMeta(), function(err, opts) {
             var css = [],
                 script = [],
-                des = builder.options.demoDependencies;
+                demo = builder.options.demo;
 
             function addRes(res) {
                 if (isJS(res)) {
@@ -151,25 +189,13 @@ exports.build = function(config, callback) {
                 return true;
             }
 
-            function buildDemo() {
-                opts.meta.css = css;
-                opts.meta.script = script;
+            if (demo) {
+                demo.link && demo.link.forEach(addRes)
 
-                var view = new Y.DocView(opts.meta);
-
-                var tmplFn = Y.Handlebars.compile(opts.layouts.demo);
-                html = tmplFn(view);
-                builder.files++;
-                cb(html, view);
-            }
-
-            if (des) {
-                des.link && des.link.forEach(addRes)
-
-                if (des.paths) {
+                if (demo.paths) {
                     var resPath = builder.options.outdir + 'assets/res';
                     fs.mkdirSync(resPath);
-                    des.paths.forEach(function(item) {
+                    demo.paths.forEach(function(item) {
                         if (item.charAt(item.length - 1) === '/') {
                             copyDir(addRes, item, resPath);
                         } else {
@@ -177,9 +203,21 @@ exports.build = function(config, callback) {
                         }
                     })
                 }
+
+                if (demo.autoComplete !== false && script.length) {
+                    fs.appendFile(builder.options.outdir + 'assets/code.html', '<script src="' + script.join('"></script><script src="') + '"></script>');
+                }
             }
 
-            buildDemo();
+            opts.meta.css = css;
+            opts.meta.script = script;
+
+            var view = new Y.DocView(opts.meta);
+
+            var tmplFn = Y.Handlebars.compile(opts.layouts.demo);
+            html = tmplFn(view);
+            builder.files++;
+            cb(html, view);
         });
     }
 

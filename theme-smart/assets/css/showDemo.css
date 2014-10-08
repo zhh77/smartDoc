@@ -1,21 +1,21 @@
 
-#show {
+#__show {
 	margin : 5px 10px;
 }
-#logs {
+#__logs {
 	margin : 5px 10px;
 	font-size : 10px;
 }
-#logs li {
+#__logs li {
 	margin : 5px;
 	padding : 5px;
 }
-#logs p {
+#__logs p {
 	margin : 0;
 }
-#logs li.success {
+#__logs li.success {
 	background-color: #a6e22e;
 }
-#logs li.fail {
+#__logs li.fail {
 	background-color: #f92672;
 }
