@@ -3,6 +3,10 @@ SmartDoc
 
 基于YUIDoc构建的Javascipt文档生成器。 
 
+
+
+license : BSD
+
 特性 
 --------------------
     * 基于Bootstrp3构建，排版和样式美化
@@ -82,6 +86,8 @@ docConfig配置项说明
 
 其他使用见 [YUIDoc](http://yui.github.com/yuidoc/)
 
+
+
 例子使用说明
 ------------------
 将代码下载后，运行
@@ -94,3 +100,5 @@ docConfig配置项说明
 
 
 注意：生成后的代码编辑页面需要发布到服务器才能正常运行；
+
+[使用SmartDoc生成的SmartJS API地址](http://zhh77.github.io/smartjs/)
