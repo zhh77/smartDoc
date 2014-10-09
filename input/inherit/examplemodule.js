@@ -29,13 +29,17 @@ YUI.add('examplemodule', function (Y) {
                  * 
                  * @method myMethod
                  * @async
+                 * @example
+                 *
+                 *     var bar;
+                 *
                  */
                 myMethod: function () {}
                 
                 /**
                 * Overwritten method see {{#crossLink "mywidget.SuperWidget"}}{{/crossLink}}
                 * also see {{#crossLink "mywidget.SuperWidget/myMethod"}}{{/crossLink}}
-                * This is also a test {{#davglass "Foo"}}{{/davglass}}
+                * This is also a test
                 * @method getTargets2
                 * @example
                 *
@@ -82,8 +86,13 @@ YUI.add('examplemodule', function (Y) {
                 /**
                 * Override Event
                 * @event init2
+                * @param {object} opt options
+                * @example
+                *         var a = '';
                 */
-                 
+                 init2 : function(opt){
+
+                 }
         }, {
         
         });
