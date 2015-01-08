@@ -1,6 +1,7 @@
 /* global $:true */
 $(function() {
     'use strict';
+    var _assetsPath = $(document.body).attr("_assetsPath");
 
     //nav init
     function navInit() {
@@ -142,7 +143,7 @@ $(function() {
         if (code.parent().hasClass('showdemo')) {
             ifr = $(html_ifr).load(loadDemo);
             code.prepend(ifr);
-            ifr.attr('src', '/assets/show.html');
+            ifr.attr('src', _assetsPath + '/show.html');
         }
         code.addClass('demo-loaded');
     }
@@ -153,7 +154,7 @@ $(function() {
         if (code.parent().hasClass('showdemo')) {
             ifr = $(html_ifr).load(loadDemo);
             code.before(ifr);
-            ifr.attr('src', '/assets/show.html');
+            ifr.attr('src', _assetsPath + '/show.html');
         }
 
         (ifr || code).attr('id', no);
@@ -161,13 +162,13 @@ $(function() {
 
     function openDemo() {
         var code = $(this).prev().children('.active').text().trim();
-        window.open('../assets/show.html', code);
+        window.open(_assetsPath + '/show.html', code);
     }
 
     function editDemo() {
         var btn = $(this),
             code = btn.prev().prev().children('.active').text().trim();
-        window.open('../assets/code.html?n=' + btn.parent().parent().children(':first').text(), code);
+        window.open(_assetsPath + '/code.html?n=' + btn.parent().parent().children(':first').text(), code);
     }
 
     function loadDemo() {
