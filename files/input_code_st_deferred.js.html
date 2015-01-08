@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>input\code\st\deferred.js - SmartDoc</title>
+  
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+</head>
+<body class="yui3-smart" _assetsPath="../assets">
+ <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+               <a class="navbar-brand mainlogo" href="https://github.com/zhh77/smartdoc">
+             
+            <img alt="SmartDoc" src="../assets/css/logo.png" title="SmartDoc">
+            
+                SmartDoc
+          </a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                 <ul class="nav navbar-nav">
+                    
+                    <li><a href="https://github.com/zhh77/smartdoc">Home</a>
+                    </li>
+                    
+                    <li><a href="/">Document</a>
+                    </li>
+                    
+                    <li><a href="https://github.com/zhh77/smartdoc">About</a>
+                    </li>
+                    
+                </ul>
+               <div class="navbar-form navbar-right filterAPi" autocomplete="off">
+                <input type="text" id='txtSearchAPI' class="form-control search-query" placeholder="Search for API" />
+                 <ul id="filterList" class="filterItems dropdown-menu" role="menu"></ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div id="sidebar">
+    <h3>Modules/Classes</h3>
+        <div id="api-tabview-filter">
+            <input id='txtSearch' type="search" class="form-control" placeholder="Type to filter Modules/Classes">
+        </div>
+        <dl id="sidebar_list">
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/ExampleModule.html">ExampleModule</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="../classes/mywidget.SuperWidget.html">mywidget.SuperWidget</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/mywidget.SubWidget.html">mywidget.SubWidget</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/mywidget.SubWidget2.html">mywidget.SubWidget2</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/json.html">json</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="../classes/JSON.html">JSON</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/oop.html">oop</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="../classes/YUI~oop.html">YUI~oop</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/Promise.html">Promise</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="../classes/Deferred.html">Deferred</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/uiModule.html">uiModule</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="../classes/UI.html">UI</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+        </dl>
+</div>
+   
+    <div class="stdoc-content">
+        <div class="apidocs">
+            <div id="docs-main">
+                <div class="content">
+                    <div class="page-header">
+    <h1>input\code\st\deferred.js <small>File</small></h1>
+</div>
+
+<div class="file">
+    <pre class="prettyprint linenums" id='src_code'>
+&quot;use strict&quot;;
+/**
+    Promise的实现对象，接口基本与Jquery相同，不依赖JQuery的时候使用;
+    
+    Update Note：
+        + 2014.10 ：Created
+
+    @module Promise
+*/
+stDefine(&#x27;deferred&#x27;, function(st) {
+
+    var priorityList = st.priorityList,
+        sliceArgs = st.sliceArgs;
+
+    /**
+     * Deferred对象
+     * @class Deferred
+     * @constructor
+     * @demo st/deferred.js [resolve]
+     */
+    function Deferred() {
+        var defer = this;
+        defer.__state = &#x27;pendding&#x27;;
+        defer.__resolvedCalls = priorityList();
+        defer.__rejectedCalls = priorityList();
+        defer.__alwaysCalls = priorityList();
+    }
+
+    function addCallbacks(defer, callbacks, state) {
+        var status = defer.state(),
+            list,
+            len = callbacks.length,
+            priority;
+
+        if (len &gt; 0) {
+            callbacks = sliceArgs(callbacks);
+
+            if (len &gt; 1) {
+                priority = callbacks[len - 1];
+
+                if (priority === undefined || typeof priority === &#x27;number&#x27;)
+                    callbacks.pop();
+                else
+                    priority = null;
+            }
+
+            if (status === state) {
+                callbacks.forEach(function(callback) {
+                    callback &amp;&amp; callback.apply(null, defer.__result);
+                })
+            } else {
+                list = defer[&#x27;__&#x27; + state + &#x27;Calls&#x27;];
+
+                callbacks.forEach(function(callback) {
+                    callback &amp;&amp; list.add(callback, priority);
+                })
+            }
+        }
+
+        return defer;
+    }
+
+    function complete(defer, args, state) {
+        defer.__state = state;
+
+        var list = defer[&#x27;__&#x27; + state + &#x27;Calls&#x27;],
+            fnCallback = function(callback) {
+                callback.apply(defer, args);
+            };
+
+        list.each(fnCallback)
+
+        defer.__alwaysCalls.each(fnCallback);
+    }
+
+    Deferred.prototype = {
+        /**
+         * 解决递延对象，并根据给定的参数调用任何完成的回调函数
+         * @method resolve
+         * @param  {object} result 解决传递的结果
+         * @demo st/deferred.js [multi resolve]
+         */
+        resolve: function(result) {
+            complete(this, arguments, &#x27;resolved&#x27;);
+        },
+        /**
+         * 拒绝延迟对象，并根据给定的参数调用任何失败的回调函数。
+         * @method reject
+         * @param  {object} arg 拒绝传递的参数
+         * @demo st/deferred.js [reject]
+         */
+        reject: function(arg) {
+            complete(this, arguments, &#x27;rejected&#x27;);
+        },
+        /**
+         * 返回契约
+         * @method promise
+         */
+        promise: function() {
+            return this.__state === &#x27;pendding&#x27; ? this : this.__result;
+        },
+        /**
+         * 返回契约状态；
+         *     1. pending: 未完成状态。 
+         *     2. resolved: 解决状态。 
+         *     3. rejected: 拒绝的状态。
+         * @method state
+         */
+        state: function() {
+            return this.__state;
+        },
+         /**
+         * 当延迟成功时调用一个函数或者数组函数。
+         * @method done
+         * @param  {function|array} callback 回调函数或者数组函数
+         */
+        done: function(callback) {
+            return addCallbacks(this, arguments, &#x27;resolved&#x27;);
+        },
+        /**
+         * 当延迟失败时调用一个函数或者数组函数。
+         * @method fail
+         * @param  {function|array} callback 回调函数或者数组函数
+         */
+        fail: function(callback) {
+            return addCallbacks(this, arguments, &#x27;rejected&#x27;);
+        },
+        /**
+         * 当递延对象是解决或拒绝时被调用添加处理程序；
+         * @method always
+         * @param  {function|array} callback 回调函数或者数组函数
+         */
+        always: function() {
+            return addCallbacks(this, arguments, &#x27;always&#x27;);
+        },
+        /**
+         * 添加处理程序被调用时，递延对象得到解决或者拒绝；
+         * @method then
+         * @param  {function} doneCallback 成功回调函数
+         * @param  {function} callback 失败回调函数或者数组函数
+         * @param  {number} priority 权重；优先级
+         */
+        then: function(doneCallback, failCallback, priority) {
+            doneCallback &amp;&amp; this.done(doneCallback, priority);
+            failCallback &amp;&amp; this.fail(failCallback, priority);
+            return this;
+        }
+    }
+
+    return {
+        Deferred: function() {
+            return new Deferred();
+        },
+        /**
+         * 捕获promise的方法，使用st.when调用；
+         * @method when
+         * @param  {object|args} result 单个判断对象或者一组（参数组）判断对象
+         * @demo 
+         */
+        when: function() {
+            var deferList = sliceArgs(arguments),
+                count = deferList.length,
+                isResolve = true,
+                num = 0,
+                rets = new Array(count),
+                isFinish,
+                whenDefer = new Deferred();
+
+            function process(i, result, state) {
+                num++;
+                if (isResolve &amp;&amp; state === &#x27;rejected&#x27;)
+                    isResolve = false;
+
+                rets[i] = result;
+
+                if (num === count) {
+                    whenDefer[isResolve ? &#x27;resolve&#x27; : &#x27;reject&#x27;].apply(whenDefer, rets);
+                    isFinish = true;
+                }
+            }
+
+            deferList.forEach(function(defer, i) {
+                if (defer instanceof Deferred) {
+                    defer.always(function(result) {
+                        process(i, result, this.state());
+                    })
+                } else
+                    process(i, defer);
+            })
+
+            if (isFinish) {
+                whenDefer.__result = rets;
+            }
+            return whenDefer;
+        }
+    };
+})
+
+    </pre>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+<a id="gotoTop" class='well well-small' href='#'>
+    Top
+</a>
+<script src="../assets/vendor/jquery/jquery-1.8.2.min.js"></script>
+<script src="../assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script src="../assets/js/config.js"></script>
+<script src="../assets/js/doc.js"></script>
+</body>
+</html>

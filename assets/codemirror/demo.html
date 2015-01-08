@@ -1,0 +1,53 @@
+<!doctype html>
+
+<title>CodeMirror: Autocomplete Demo</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="lib/codemirror.css">
+<link rel="stylesheet" href="addon/dialog/dialog.css">
+<link rel="stylesheet" href="addon/fold/foldgutter.css">
+<link rel="stylesheet" href="addon/dialog/dialog.css">
+<link rel="stylesheet" href="theme/monokai.css">
+<link rel="stylesheet" href="addon/lint/lint.css">
+
+<script src="lib/codemirror.js"></script>
+
+<script src="addon/lint/jshint.js"></script>
+<script src="addon/lint/lint.js"></script>
+<script src="addon/lint/javascript-lint.js"></script>
+<script src="mode/javascript/javascript.js"></script>
+
+<script src="addon/search/searchcursor.js"></script>
+<script src="addon/search/search.js"></script>
+<script src="addon/dialog/dialog.js"></script>
+<script src="addon/edit/matchbrackets.js"></script>
+<script src="addon/edit/closebrackets.js"></script>
+<script src="addon/comment/comment.js"></script>
+<script src="addon/wrap/hardwrap.js"></script>
+<script src="addon/fold/foldcode.js"></script>
+<script src="addon/fold/brace-fold.js"></script>
+<script src="mode/javascript/javascript.js"></script>
+<script src="keymap/sublime.js"></script>
+
+
+<textarea id="code" name="code">
+</textarea>
+
+<script>
+
+var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+    value: 'alert(1);',
+    lineNumbers: true,
+    mode: "javascript",
+    keyMap: "sublime",
+    autoCloseBrackets: true,
+    matchBrackets: true,
+    showCursorWhenSelecting: true,
+    theme: "monokai",
+    lint: true,
+    gutters: ["CodeMirror-lint-markers"],
+});
+
+// editor.openDialog("<div>1111</div>", function(){
+//   alert(1);
+// })
+</script>

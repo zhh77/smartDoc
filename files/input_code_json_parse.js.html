@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>input\code\json\parse.js - SmartDoc</title>
+  
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+</head>
+<body class="yui3-smart" _assetsPath="../assets">
+ <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+               <a class="navbar-brand mainlogo" href="https://github.com/zhh77/smartdoc">
+             
+            <img alt="SmartDoc" src="../assets/css/logo.png" title="SmartDoc">
+            
+                SmartDoc
+          </a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                 <ul class="nav navbar-nav">
+                    
+                    <li><a href="https://github.com/zhh77/smartdoc">Home</a>
+                    </li>
+                    
+                    <li><a href="/">Document</a>
+                    </li>
+                    
+                    <li><a href="https://github.com/zhh77/smartdoc">About</a>
+                    </li>
+                    
+                </ul>
+               <div class="navbar-form navbar-right filterAPi" autocomplete="off">
+                <input type="text" id='txtSearchAPI' class="form-control search-query" placeholder="Search for API" />
+                 <ul id="filterList" class="filterItems dropdown-menu" role="menu"></ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div id="sidebar">
+    <h3>Modules/Classes</h3>
+        <div id="api-tabview-filter">
+            <input id='txtSearch' type="search" class="form-control" placeholder="Type to filter Modules/Classes">
+        </div>
+        <dl id="sidebar_list">
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/ExampleModule.html">ExampleModule</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="../classes/mywidget.SuperWidget.html">mywidget.SuperWidget</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/mywidget.SubWidget.html">mywidget.SubWidget</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/mywidget.SubWidget2.html">mywidget.SubWidget2</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/json.html">json</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="../classes/JSON.html">JSON</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/oop.html">oop</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="../classes/YUI~oop.html">YUI~oop</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/Promise.html">Promise</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="../classes/Deferred.html">Deferred</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/uiModule.html">uiModule</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="../classes/UI.html">UI</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+        </dl>
+</div>
+   
+    <div class="stdoc-content">
+        <div class="apidocs">
+            <div id="docs-main">
+                <div class="content">
+                    <div class="page-header">
+    <h1>input\code\json\parse.js <small>File</small></h1>
+</div>
+
+<div class="file">
+    <pre class="prettyprint linenums" id='src_code'>
+/**
+ * &lt;p&gt;The JSON module adds support for serializing JavaScript objects into
+ * JSON strings and parsing JavaScript objects from strings in JSON format.&lt;/p&gt;
+ *
+ * &lt;p&gt;The JSON namespace is added to your YUI instance including static methods
+ * Y.JSON.parse(..) and Y.JSON.stringify(..).&lt;/p&gt;
+ *
+ * &lt;p&gt;The functionality and method signatures follow the ECMAScript 5
+ * specification.  In browsers with native JSON support, the native
+ * implementation is used.&lt;/p&gt;
+ *
+ * &lt;p&gt;The &lt;code&gt;json&lt;/code&gt; module is a rollup of &lt;code&gt;json-parse&lt;/code&gt; and
+ * &lt;code&gt;json-stringify&lt;/code&gt;.&lt;/p&gt;
+ * 
+ * &lt;p&gt;As their names suggest, &lt;code&gt;json-parse&lt;/code&gt; adds support for parsing
+ * JSON data (Y.JSON.parse) and &lt;code&gt;json-stringify&lt;/code&gt; for serializing
+ * JavaScript data into JSON strings (Y.JSON.stringify).  You may choose to
+ * include either of the submodules individually if you don&#x27;t need the
+ * complementary functionality, or include the rollup for both.&lt;/p&gt;
+ *
+ * @module json
+ * @main json
+ * @class JSON
+ * @static
+ */
+
+/**
+ * Provides Y.JSON.parse method to accept JSON strings and return native
+ * JavaScript objects.
+ *
+ * @module json
+ * @submodule json-parse
+ * @for JSON
+ * @static
+ */
+
+
+// All internals kept private for security reasons
+function fromGlobal(ref) {
+    return (Y.config.win || this || {})[ref];
+}
+
+
+    /**
+     * Alias to native browser implementation of the JSON object if available.
+     *
+     * @property Native
+     * @type {Object}
+     * @private
+     */
+var _JSON  = fromGlobal(&#x27;JSON&#x27;),
+
+    Native = (Object.prototype.toString.call(_JSON) === &#x27;[object JSON]&#x27; &amp;&amp; _JSON),
+    useNative = !!Native,
+
+    /**
+     * Replace certain Unicode characters that JavaScript may handle incorrectly
+     * during eval--either by deleting them or treating them as line
+     * endings--with escape sequences.
+     * IMPORTANT NOTE: This regex will be used to modify the input if a match is
+     * found.
+     *
+     * @property _UNICODE_EXCEPTIONS
+     * @type {RegExp}
+     * @private
+     */
+    _UNICODE_EXCEPTIONS = /[\u0000\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,
+
+
+    /**
+     * First step in the safety evaluation.  Regex used to replace all escape
+     * sequences (i.e. &quot;\\&quot;, etc) with &#x27;@&#x27; characters (a non-JSON character).
+     *
+     * @property _ESCAPES
+     * @type {RegExp}
+     * @private
+     */
+    _ESCAPES = /\\(?:[&quot;\\\/bfnrt]|u[0-9a-fA-F]{4})/g,
+
+    /**
+     * Second step in the safety evaluation.  Regex used to replace all simple
+     * values with &#x27;]&#x27; characters.
+     *
+     * @property _VALUES
+     * @type {RegExp}
+     * @private
+     */
+    _VALUES  = /&quot;[^&quot;\\\n\r]*&quot;|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g,
+
+    /**
+     * Third step in the safety evaluation.  Regex used to remove all open
+     * square brackets following a colon, comma, or at the beginning of the
+     * string.
+     *
+     * @property _BRACKETS
+     * @type {RegExp}
+     * @private
+     */
+    _BRACKETS = /(?:^|:|,)(?:\s*\[)+/g,
+
+    /**
+     * Final step in the safety evaluation.  Regex used to test the string left
+     * after all previous replacements for invalid characters.
+     *
+     * @property _UNSAFE
+     * @type {RegExp}
+     * @private
+     */
+    _UNSAFE = /[^\],:{}\s]/,
+    
+    /**
+     * Replaces specific unicode characters with their appropriate \unnnn
+     * format. Some browsers ignore certain characters during eval.
+     *
+     * @method escapeException
+     * @param c {String} Unicode character
+     * @return {String} the \unnnn escapement of the character
+     * @private
+     */
+    _escapeException = function (c) {
+        return &#x27;\\u&#x27;+(&#x27;0000&#x27;+(+(c.charCodeAt(0))).toString(16)).slice(-4);
+    },
+
+    /**
+     * Traverses nested objects, applying a reviver function to each (key,value)
+     * from the scope if the key:value&#x27;s containing object.  The value returned
+     * from the function will replace the original value in the key:value pair.
+     * If the value returned is undefined, the key will be omitted from the
+     * returned object.
+     *
+     * @method _revive
+     * @param data {MIXED} Any JavaScript data
+     * @param reviver {Function} filter or mutation function
+     * @return {MIXED} The results of the filtered data
+     * @private
+     */
+    _revive = function (data, reviver) {
+        var walk = function (o,key) {
+            var k,v,value = o[key];
+            if (value &amp;&amp; typeof value === &#x27;object&#x27;) {
+                for (k in value) {
+                    if (value.hasOwnProperty(k)) {
+                        v = walk(value, k);
+                        if (v === undefined) {
+                            delete value[k];
+                        } else {
+                            value[k] = v;
+                        }
+                    }
+                }
+            }
+            return reviver.call(o,key,value);
+        };
+
+        return typeof reviver === &#x27;function&#x27; ? walk({&#x27;&#x27;:data},&#x27;&#x27;) : data;
+    },
+
+    /**
+     * Parse a JSON string, returning the native JavaScript representation.
+     *
+     * @param s {string} JSON string data
+     * @param reviver {function} (optional) function(k,v) passed each key value
+     *          pair of object literals, allowing pruning or altering values
+     * @return {MIXED} the native JavaScript representation of the JSON string
+     * @throws SyntaxError
+     * @method parse
+     * @static
+     */
+    // JavaScript implementation in lieu of native browser support.  Based on
+    // the json2.js library from http://json.org
+    _parse = function (s,reviver) {
+        // Replace certain Unicode characters that are otherwise handled
+        // incorrectly by some browser implementations.
+        // NOTE: This modifies the input if such characters are found!
+        s = s.replace(_UNICODE_EXCEPTIONS, _escapeException);
+        
+        // Test for any remaining invalid characters
+        if (!_UNSAFE.test(s.replace(_ESCAPES,&#x27;@&#x27;).
+                            replace(_VALUES,&#x27;]&#x27;).
+                            replace(_BRACKETS,&#x27;&#x27;))) {
+
+            // Eval the text into a JavaScript data structure, apply any
+            // reviver function, and return
+            return _revive( EVAL_TOKEN(&#x27;(&#x27; + s + &#x27;)&#x27;), reviver );
+        }
+
+        throw new SyntaxError(&#x27;JSON.parse&#x27;);
+    };
+    
+Y.namespace(&#x27;JSON&#x27;).parse = function (s,reviver) {
+        if (typeof s !== &#x27;string&#x27;) {
+            s += &#x27;&#x27;;
+        }
+
+        return Native &amp;&amp; Y.JSON.useNativeParse ?
+            Native.parse(s,reviver) : _parse(s,reviver);
+};
+
+function workingNative( k, v ) {
+    return k === &quot;ok&quot; ? true : v;
+}
+
+// Double check basic functionality.  This is mainly to catch early broken
+// implementations of the JSON API in Firefox 3.1 beta1 and beta2
+if ( Native ) {
+    try {
+        useNative = ( Native.parse( &#x27;{&quot;ok&quot;:false}&#x27;, workingNative ) ).ok;
+    }
+    catch ( e ) {
+        useNative = false;
+    }
+}
+
+/**
+ * Leverage native JSON parse if the browser has a native implementation.
+ * In general, this is a good idea.  See the Known Issues section in the
+ * JSON user guide for caveats.  The default value is true for browsers with
+ * native JSON support.
+ *
+ * @property useNativeParse
+ * @type Boolean
+ * @default true
+ * @static
+ */
+Y.JSON.useNativeParse = useNative;
+
+    </pre>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+<a id="gotoTop" class='well well-small' href='#'>
+    Top
+</a>
+<script src="../assets/vendor/jquery/jquery-1.8.2.min.js"></script>
+<script src="../assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script src="../assets/js/config.js"></script>
+<script src="../assets/js/doc.js"></script>
+</body>
+</html>

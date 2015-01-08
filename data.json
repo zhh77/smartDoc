@@ -1,0 +1,1223 @@
+{
+    "project": {
+        "name": "SmartDoc",
+        "version": "1.1.0",
+        "url": "https://github.com/zhh77/smartdoc",
+        "navs": [
+            {
+                "name": "Home",
+                "url": "https://github.com/zhh77/smartdoc"
+            },
+            {
+                "name": "Document",
+                "url": "/"
+            },
+            {
+                "name": "About",
+                "url": "https://github.com/zhh77/smartdoc"
+            }
+        ]
+    },
+    "files": {
+        "input\\code\\inherit\\examplemodule.js": {
+            "name": "input\\code\\inherit\\examplemodule.js",
+            "modules": {
+                "ExampleModule": 1
+            },
+            "classes": {
+                "mywidget.SuperWidget": 1,
+                "mywidget.SubWidget": 1,
+                "mywidget.SubWidget2": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "mywidget": 1
+            }
+        },
+        "input\\code\\json\\parse.js": {
+            "name": "input\\code\\json\\parse.js",
+            "modules": {
+                "json": 1,
+                "json-parse": 1
+            },
+            "classes": {
+                "JSON": 1
+            },
+            "fors": {
+                "JSON": 1
+            },
+            "namespaces": {}
+        },
+        "input\\code\\json\\stringify.js": {
+            "name": "input\\code\\json\\stringify.js",
+            "modules": {
+                "json-stringify": 1
+            },
+            "classes": {},
+            "fors": {
+                "JSON": 1
+            },
+            "namespaces": {}
+        },
+        "input\\code\\oop\\oop.js": {
+            "name": "input\\code\\oop\\oop.js",
+            "modules": {
+                "oop": 1
+            },
+            "classes": {
+                "YUI~oop": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "input\\code\\st\\deferred.js": {
+            "name": "input\\code\\st\\deferred.js",
+            "modules": {
+                "Promise": 1
+            },
+            "classes": {
+                "Deferred": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "input\\code\\ui\\uicode.js": {
+            "name": "input\\code\\ui\\uicode.js",
+            "modules": {
+                "uiModule": 1
+            },
+            "classes": {
+                "UI": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {
+        "ExampleModule": {
+            "name": "ExampleModule",
+            "submodules": {},
+            "classes": {
+                "mywidget.SuperWidget": 1,
+                "mywidget.SubWidget": 1,
+                "mywidget.SubWidget2": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "mywidget": 1
+            },
+            "tag": "module",
+            "file": "input\\code\\inherit\\examplemodule.js",
+            "line": 123,
+            "description": "This is my example module",
+            "example": [
+                "\n\n    var bar;\n"
+            ]
+        },
+        "json": {
+            "name": "json",
+            "submodules": {
+                "json-parse": 1,
+                "json-stringify": 1
+            },
+            "classes": {
+                "JSON": 1
+            },
+            "fors": {
+                "JSON": 1
+            },
+            "namespaces": {},
+            "tag": "main",
+            "file": "input\\code\\json\\parse.js",
+            "line": 1,
+            "description": "<p>The JSON module adds support for serializing JavaScript objects into\nJSON strings and parsing JavaScript objects from strings in JSON format.</p>\n\n<p>The JSON namespace is added to your YUI instance including static methods\nY.JSON.parse(..) and Y.JSON.stringify(..).</p>\n\n<p>The functionality and method signatures follow the ECMAScript 5\nspecification.  In browsers with native JSON support, the native\nimplementation is used.</p>\n\n<p>The <code>json</code> module is a rollup of <code>json-parse</code> and\n<code>json-stringify</code>.</p>\n\n<p>As their names suggest, <code>json-parse</code> adds support for parsing\nJSON data (Y.JSON.parse) and <code>json-stringify</code> for serializing\nJavaScript data into JSON strings (Y.JSON.stringify).  You may choose to\ninclude either of the submodules individually if you don't need the\ncomplementary functionality, or include the rollup for both.</p>",
+            "itemtype": "main"
+        },
+        "json-parse": {
+            "name": "json-parse",
+            "submodules": {},
+            "classes": {
+                "JSON": 1
+            },
+            "fors": {},
+            "is_submodule": 1,
+            "namespaces": {},
+            "module": "json",
+            "namespace": "",
+            "file": "input\\code\\json\\parse.js",
+            "line": 1,
+            "description": "Provides Y.JSON.parse method to accept JSON strings and return native\nJavaScript objects.",
+            "static": 1
+        },
+        "json-stringify": {
+            "name": "json-stringify",
+            "submodules": {},
+            "classes": {},
+            "fors": {},
+            "is_submodule": 1,
+            "namespaces": {},
+            "module": "json",
+            "namespace": "",
+            "file": "input\\code\\json\\stringify.js",
+            "line": 1,
+            "description": "Provides Y.JSON.stringify method for converting objects to JSON strings.",
+            "static": 1
+        },
+        "oop": {
+            "name": "oop",
+            "submodules": {},
+            "classes": {
+                "YUI~oop": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "input\\code\\oop\\oop.js",
+            "line": 9,
+            "description": "Supplies object inheritance and manipulation utilities.  This adds\nadditional functionaity to what is provided in yui-base, and the\nmethods are applied directly to the YUI instance.  This module\nis required for most YUI components."
+        },
+        "Promise": {
+            "name": "Promise",
+            "submodules": {},
+            "classes": {
+                "Deferred": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "input\\code\\st\\deferred.js",
+            "line": 15,
+            "description": "Promise的实现对象，接口基本与Jquery相同，不依赖JQuery的时候使用;\n\nUpdate Note：\n    + 2014.10 ：Created"
+        },
+        "uiModule": {
+            "name": "uiModule",
+            "submodules": {},
+            "classes": {
+                "UI": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "input\\code\\ui\\uicode.js",
+            "line": 10,
+            "description": "ui测试模块；\n* 提供了example的html与js实例；\n* example中引用了jquery的dns和本模块的uiCode.js文件"
+        }
+    },
+    "classes": {
+        "mywidget.SuperWidget": {
+            "name": "mywidget.SuperWidget",
+            "shortname": "mywidget.SuperWidget",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "ExampleModule",
+            "namespace": "mywidget",
+            "file": "input\\code\\inherit\\examplemodule.js",
+            "line": 13,
+            "description": "<b>Superclass</b> description.<br>This is a second line too.",
+            "is_constructor": 1,
+            "extends": "Widget",
+            "example": [
+                "\n\n    var bar;\n"
+            ]
+        },
+        "mywidget.SubWidget": {
+            "name": "mywidget.SubWidget",
+            "shortname": "mywidget.SubWidget",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "ExampleModule",
+            "namespace": "mywidget",
+            "file": "input\\code\\inherit\\examplemodule.js",
+            "line": 101,
+            "description": "Subclass description.",
+            "is_constructor": 1,
+            "extends": "mywidget.SuperWidget"
+        },
+        "mywidget.SubWidget2": {
+            "name": "mywidget.SubWidget2",
+            "shortname": "mywidget.SubWidget2",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "ExampleModule",
+            "namespace": "mywidget",
+            "file": "input\\code\\inherit\\examplemodule.js",
+            "line": 123,
+            "description": "Subclass description.",
+            "is_constructor": 1,
+            "extends": "Accordion"
+        },
+        "JSON": {
+            "name": "JSON",
+            "shortname": "JSON",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "json",
+            "namespace": "",
+            "file": "input\\code\\json\\parse.js",
+            "line": 1,
+            "description": "<p>The JSON module adds support for serializing JavaScript objects into\nJSON strings and parsing JavaScript objects from strings in JSON format.</p>\n\n<p>The JSON namespace is added to your YUI instance including static methods\nY.JSON.parse(..) and Y.JSON.stringify(..).</p>\n\n<p>The functionality and method signatures follow the ECMAScript 5\nspecification.  In browsers with native JSON support, the native\nimplementation is used.</p>\n\n<p>The <code>json</code> module is a rollup of <code>json-parse</code> and\n<code>json-stringify</code>.</p>\n\n<p>As their names suggest, <code>json-parse</code> adds support for parsing\nJSON data (Y.JSON.parse) and <code>json-stringify</code> for serializing\nJavaScript data into JSON strings (Y.JSON.stringify).  You may choose to\ninclude either of the submodules individually if you don't need the\ncomplementary functionality, or include the rollup for both.</p>",
+            "mainName": "json",
+            "tag": "main",
+            "itemtype": "main",
+            "_main": true,
+            "submodule": "json-parse"
+        },
+        "YUI~oop": {
+            "name": "YUI~oop",
+            "shortname": "YUI~oop",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "oop",
+            "namespace": "",
+            "file": "input\\code\\oop\\oop.js",
+            "line": 9,
+            "description": "The following methods are added to the YUI instance"
+        },
+        "Deferred": {
+            "name": "Deferred",
+            "shortname": "Deferred",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Promise",
+            "namespace": "",
+            "file": "input\\code\\st\\deferred.js",
+            "line": 15,
+            "description": "Deferred对象",
+            "is_constructor": 1,
+            "example": [
+                "\t\r\n\t    \t\tvar defer = st.Deferred();\r\n\t\r\n\t    \t\tfunction test(){\r\n\t    \t\t\tsetTimeout(function(){\r\n\t    \t\t\t\tdefer.resolve(\"test\");\r\n\t    \t\t\t})\r\n\t    \t\t\treturn defer.promise();\r\n\t\r\n\t    \t\t}\r\n\t\r\n\t    \t\tst.when(test()).done(function(result){\r\n\t    \t\t\texpect(result).toBe('test');\r\n\t    \t\t\t\r\n\t    \t\t})\r\n\t    \t"
+            ],
+            "exampleTitles": [
+                "deferred"
+            ]
+        },
+        "UI": {
+            "name": "UI",
+            "shortname": "UI",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "uiModule",
+            "namespace": "",
+            "file": "input\\code\\ui\\uicode.js",
+            "line": 10,
+            "description": "ui测试类；",
+            "is_constructor": 1,
+            "content": "{string} type 内容",
+            "example": [
+                "\t<html>\r\n\t<style>\r\n\t     #container {\r\n\t          color:#fff;\r\n\t          width:200px;\r\n\t          height:30px;\r\n\t          line-height: 30px;\r\n\t          border-radius: 5px;\r\n\t          background: #5bc0de;\r\n\t          text-align: center;\r\n\t     }\r\n\t\r\n\t</style>\r\n\t     <h2>UI测试1</h2>\r\n\t     <div id='container'>html render</div>\r\n\t</html>\r\n\t<script>\r\n\t $(function(){\r\n\t       //ui code输出\r\n\t          var ui = new UI(\"UI测试\");\r\n\t          $('#container').text(ui.render());\r\n\t\r\n\t          //log输出\r\n\t          log('this is a message');\r\n\t\r\n\t          //expect === 输出\r\n\t          expect(1).toBe(true);\r\n\t\r\n\t          //expect == 输出\r\n\t          expect(1).toEqual(true);\r\n\t     });\r\n\t   \r\n\t</script>\r\n\t",
+                "\t<html>\r\n\t<style>\r\n\t     #container {\r\n\t          color:#fff;\r\n\t          width:200px;\r\n\t          height:30px;\r\n\t          line-height: 30px;\r\n\t          border-radius: 5px;\r\n\t          background: #f0ad4e;\r\n\t          text-align: center;\r\n\t     }\r\n\t\r\n\t</style>\r\n\t\r\n\t     <h2>UI测试2</h2>\r\n\t     <div id='container'></div>\r\n\t</html>\r\n\t<script>\r\n\t     //ui code输出\r\n\t     var ui = new UI(\"UI测试2\");\r\n\t     document.getElementById('container').innerText = ui.render();\r\n\t</script>\r\n\t"
+            ],
+            "exampleTitles": [
+                "ui",
+                "ui测试2"
+            ],
+            "show": true
+        }
+    },
+    "classitems": [
+        {
+            "file": "input\\code\\inherit\\examplemodule.js",
+            "line": 27,
+            "description": "<b>Supermethod</b> description.<br>This is a second line.",
+            "itemtype": "method",
+            "name": "myMethod",
+            "async": 1,
+            "example": [
+                "\n\n    var bar;\n"
+            ],
+            "class": "mywidget.SuperWidget",
+            "module": "ExampleModule",
+            "namespace": "mywidget"
+        },
+        {
+            "file": "input\\code\\inherit\\examplemodule.js",
+            "line": 39,
+            "description": "Overwritten method see {{#crossLink \"mywidget.SuperWidget\"}}{{/crossLink}}\nalso see {{#crossLink \"mywidget.SuperWidget/myMethod\"}}{{/crossLink}}\nThis is also a test",
+            "itemtype": "method",
+            "name": "getTargets2",
+            "example": [
+                "\n\n    var bar;\n"
+            ],
+            "class": "mywidget.SuperWidget",
+            "module": "ExampleModule",
+            "namespace": "mywidget"
+        },
+        {
+            "file": "input\\code\\inherit\\examplemodule.js",
+            "line": 50,
+            "description": "Overwritten method see {{#crossLink \"mywidget.SuperWidget\"}}{{/crossLink}}\nalso see {{#crossLink \"mywidget.SuperWidget/myMethod\"}}{{/crossLink}}\nThis is also a test\n\n```javascript\n\nvar test = \"hello from a code block!\";\n\n```",
+            "itemtype": "method",
+            "name": "getTargets3",
+            "example": [
+                "\tvar a = \"222\";\r\n\tvar b = 2;"
+            ],
+            "exampleTitles": [
+                "getTargets3"
+            ],
+            "class": "mywidget.SuperWidget",
+            "module": "ExampleModule",
+            "namespace": "mywidget"
+        },
+        {
+            "file": "input\\code\\inherit\\examplemodule.js",
+            "line": 65,
+            "description": "Override Attribute",
+            "itemtype": "attribute",
+            "name": "focused2",
+            "optional": 1,
+            "class": "mywidget.SuperWidget",
+            "module": "ExampleModule",
+            "namespace": "mywidget"
+        },
+        {
+            "file": "input\\code\\inherit\\examplemodule.js",
+            "line": 71,
+            "description": "Override Attribute",
+            "itemtype": "attribute",
+            "name": "focused3",
+            "required": 1,
+            "example": [
+                " \n        {\n            a:1\n        }"
+            ],
+            "class": "mywidget.SuperWidget",
+            "module": "ExampleModule",
+            "namespace": "mywidget"
+        },
+        {
+            "file": "input\\code\\inherit\\examplemodule.js",
+            "line": 81,
+            "description": "Override Property",
+            "itemtype": "property",
+            "name": "name2",
+            "type": "String",
+            "class": "mywidget.SuperWidget",
+            "module": "ExampleModule",
+            "namespace": "mywidget"
+        },
+        {
+            "file": "input\\code\\inherit\\examplemodule.js",
+            "line": 87,
+            "description": "Override Event",
+            "itemtype": "event",
+            "name": "init2",
+            "params": [
+                {
+                    "name": "opt",
+                    "description": "options",
+                    "type": "Object"
+                }
+            ],
+            "example": [
+                "\n        var a = '';"
+            ],
+            "class": "mywidget.SuperWidget",
+            "module": "ExampleModule",
+            "namespace": "mywidget"
+        },
+        {
+            "file": "input\\code\\inherit\\examplemodule.js",
+            "line": 111,
+            "description": "Submethod description.",
+            "itemtype": "method",
+            "name": "myMethod",
+            "params": [
+                {
+                    "name": "d",
+                    "description": "Foo",
+                    "type": "Boolean"
+                }
+            ],
+            "class": "mywidget.SubWidget",
+            "module": "ExampleModule",
+            "namespace": "mywidget"
+        },
+        {
+            "file": "input\\code\\json\\parse.js",
+            "line": 44,
+            "description": "Alias to native browser implementation of the JSON object if available.",
+            "itemtype": "property",
+            "name": "Native",
+            "type": "{Object}",
+            "access": "private",
+            "tagname": "",
+            "class": "JSON",
+            "module": "json",
+            "submodule": "json-parse"
+        },
+        {
+            "file": "input\\code\\json\\parse.js",
+            "line": 56,
+            "description": "Replace certain Unicode characters that JavaScript may handle incorrectly\nduring eval--either by deleting them or treating them as line\nendings--with escape sequences.\nIMPORTANT NOTE: This regex will be used to modify the input if a match is\nfound.",
+            "itemtype": "property",
+            "name": "_UNICODE_EXCEPTIONS",
+            "type": "{RegExp}",
+            "access": "private",
+            "tagname": "",
+            "class": "JSON",
+            "module": "json",
+            "submodule": "json-parse"
+        },
+        {
+            "file": "input\\code\\json\\parse.js",
+            "line": 70,
+            "description": "First step in the safety evaluation.  Regex used to replace all escape\nsequences (i.e. \"\\\\\", etc) with '@' characters (a non-JSON character).",
+            "itemtype": "property",
+            "name": "_ESCAPES",
+            "type": "{RegExp}",
+            "access": "private",
+            "tagname": "",
+            "class": "JSON",
+            "module": "json",
+            "submodule": "json-parse"
+        },
+        {
+            "file": "input\\code\\json\\parse.js",
+            "line": 80,
+            "description": "Second step in the safety evaluation.  Regex used to replace all simple\nvalues with ']' characters.",
+            "itemtype": "property",
+            "name": "_VALUES",
+            "type": "{RegExp}",
+            "access": "private",
+            "tagname": "",
+            "class": "JSON",
+            "module": "json",
+            "submodule": "json-parse"
+        },
+        {
+            "file": "input\\code\\json\\parse.js",
+            "line": 90,
+            "description": "Third step in the safety evaluation.  Regex used to remove all open\nsquare brackets following a colon, comma, or at the beginning of the\nstring.",
+            "itemtype": "property",
+            "name": "_BRACKETS",
+            "type": "{RegExp}",
+            "access": "private",
+            "tagname": "",
+            "class": "JSON",
+            "module": "json",
+            "submodule": "json-parse"
+        },
+        {
+            "file": "input\\code\\json\\parse.js",
+            "line": 101,
+            "description": "Final step in the safety evaluation.  Regex used to test the string left\nafter all previous replacements for invalid characters.",
+            "itemtype": "property",
+            "name": "_UNSAFE",
+            "type": "{RegExp}",
+            "access": "private",
+            "tagname": "",
+            "class": "JSON",
+            "module": "json",
+            "submodule": "json-parse"
+        },
+        {
+            "file": "input\\code\\json\\parse.js",
+            "line": 111,
+            "description": "Replaces specific unicode characters with their appropriate \\unnnn\nformat. Some browsers ignore certain characters during eval.",
+            "itemtype": "method",
+            "name": "escapeException",
+            "params": [
+                {
+                    "name": "c",
+                    "description": "Unicode character",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "the \\unnnn escapement of the character",
+                "type": "String"
+            },
+            "access": "private",
+            "tagname": "",
+            "class": "JSON",
+            "module": "json",
+            "submodule": "json-parse"
+        },
+        {
+            "file": "input\\code\\json\\parse.js",
+            "line": 124,
+            "description": "Traverses nested objects, applying a reviver function to each (key,value)\nfrom the scope if the key:value's containing object.  The value returned\nfrom the function will replace the original value in the key:value pair.\nIf the value returned is undefined, the key will be omitted from the\nreturned object.",
+            "itemtype": "method",
+            "name": "_revive",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "Any JavaScript data",
+                    "type": "MIXED"
+                },
+                {
+                    "name": "reviver",
+                    "description": "filter or mutation function",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "The results of the filtered data",
+                "type": "MIXED"
+            },
+            "access": "private",
+            "tagname": "",
+            "class": "JSON",
+            "module": "json",
+            "submodule": "json-parse"
+        },
+        {
+            "file": "input\\code\\json\\parse.js",
+            "line": 158,
+            "description": "Parse a JSON string, returning the native JavaScript representation.",
+            "params": [
+                {
+                    "name": "s",
+                    "description": "JSON string data",
+                    "type": "String"
+                },
+                {
+                    "name": "reviver",
+                    "description": "(optional) function(k,v) passed each key value\n         pair of object literals, allowing pruning or altering values",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "the native JavaScript representation of the JSON string",
+                "type": "MIXED"
+            },
+            "throws": [
+                "SyntaxError"
+            ],
+            "itemtype": "method",
+            "name": "parse",
+            "static": 1,
+            "class": "JSON",
+            "module": "json",
+            "submodule": "json-parse"
+        },
+        {
+            "file": "input\\code\\json\\parse.js",
+            "line": 214,
+            "description": "Leverage native JSON parse if the browser has a native implementation.\nIn general, this is a good idea.  See the Known Issues section in the\nJSON user guide for caveats.  The default value is true for browsers with\nnative JSON support.",
+            "itemtype": "property",
+            "name": "useNativeParse",
+            "type": "Boolean",
+            "default": "true",
+            "static": 1,
+            "class": "JSON",
+            "module": "json",
+            "submodule": "json-parse"
+        },
+        {
+            "file": "input\\code\\json\\stringify.js",
+            "line": 248,
+            "description": "Leverage native JSON stringify if the browser has a native\nimplementation.  In general, this is a good idea.  See the Known Issues\nsection in the JSON user guide for caveats.  The default value is true\nfor browsers with native JSON support.",
+            "itemtype": "property",
+            "name": "useNativeStringify",
+            "type": "Boolean",
+            "default": "true",
+            "static": 1,
+            "class": "JSON",
+            "module": "json",
+            "submodule": "json-stringify"
+        },
+        {
+            "file": "input\\code\\json\\stringify.js",
+            "line": 261,
+            "description": "Serializes a Date instance as a UTC date string.  Used internally by\nstringify.  Override this method if you need Dates serialized in a\ndifferent format.",
+            "itemtype": "method",
+            "name": "dateToString",
+            "params": [
+                {
+                    "name": "d",
+                    "description": "The Date to serialize",
+                    "type": "Date"
+                }
+            ],
+            "return": {
+                "description": "stringified Date in UTC format YYYY-MM-DDTHH:mm:SSZ",
+                "type": "String"
+            },
+            "deprecated": true,
+            "deprecationMessage": "Use a replacer function",
+            "static": 1,
+            "class": "JSON",
+            "module": "json",
+            "submodule": "json-stringify"
+        },
+        {
+            "file": "input\\code\\json\\stringify.js",
+            "line": 285,
+            "description": "<p>Converts an arbitrary value to a JSON string representation.</p>\n\n<p>Objects with cyclical references will trigger an exception.</p>\n\n<p>If a whitelist is provided, only matching object keys will be\nincluded.  Alternately, a replacer function may be passed as the\nsecond parameter.  This function is executed on every value in the\ninput, and its return value will be used in place of the original value.\nThis is useful to serialize specialized objects or class instances.</p>\n\n<p>If a positive integer or non-empty string is passed as the third\nparameter, the output will be formatted with carriage returns and\nindentation for readability.  If a String is passed (such as \"\\t\") it\nwill be used once for each indentation level.  If a number is passed,\nthat number of spaces will be used.</p>",
+            "itemtype": "method",
+            "name": "stringify",
+            "params": [
+                {
+                    "name": "o",
+                    "description": "any arbitrary value to convert to JSON string",
+                    "type": "MIXED"
+                },
+                {
+                    "name": "w",
+                    "description": "(optional) whitelist of acceptable object\n                 keys to include, or a replacer function to modify the\n                 raw value before serialization",
+                    "type": "Array|Function"
+                },
+                {
+                    "name": "ind",
+                    "description": "(optional) indentation character or depth of\n                 spaces to format the output.",
+                    "type": "Number|String"
+                }
+            ],
+            "return": {
+                "description": "JSON string representation of the input",
+                "type": "String"
+            },
+            "static": 1,
+            "class": "JSON",
+            "module": "json",
+            "submodule": "json-stringify"
+        },
+        {
+            "file": "input\\code\\json\\stringify.js",
+            "line": 317,
+            "description": "<p>Number of occurrences of a special character within a single call to\nstringify that should trigger promotion of that character to a dedicated\npreprocess step for future calls.  This is only used in environments\nthat don't support native JSON, or when useNativeStringify is set to\nfalse.</p>\n\n<p>So, if set to 50 and an object is passed to stringify that includes\nstrings containing the special character \\x07 more than 50 times,\nsubsequent calls to stringify will process object strings through a\nfaster serialization path for \\x07 before using the generic, slower,\nreplacement process for all special characters.</p>\n\n<p>To prime the preprocessor cache, set this value to 1, then call\n<code>Y.JSON.stringify(\"<em>(all special characters to\ncache)</em>\");</code>, then return this setting to a more conservative\nvalue.</p>\n\n<p>Special characters \\ \" \\b \\t \\n \\f \\r are already cached.</p>",
+            "itemtype": "property",
+            "name": "charCacheThreshold",
+            "static": 1,
+            "default": "100",
+            "type": "{Number}",
+            "class": "JSON",
+            "module": "json",
+            "submodule": "json-stringify"
+        },
+        {
+            "file": "input\\code\\oop\\oop.js",
+            "line": 37,
+            "description": "Applies prototype properties from the supplier to the receiver.\nThe receiver can be a constructor or an instance.",
+            "itemtype": "method",
+            "name": "augment",
+            "params": [
+                {
+                    "name": "r",
+                    "description": "the object to receive the augmentation.",
+                    "type": "Function"
+                },
+                {
+                    "name": "s",
+                    "description": "the object that supplies the properties to augment.",
+                    "type": "Function"
+                },
+                {
+                    "name": "ov",
+                    "description": "if true, properties already on the receiver\nwill be overwritten if found on the supplier.",
+                    "type": "Boolean"
+                },
+                {
+                    "name": "wl",
+                    "description": "a whitelist.  If supplied, only properties in\nthis list will be applied to the receiver.",
+                    "type": "String[]"
+                },
+                {
+                    "name": "args",
+                    "description": "arg or arguments to apply to the supplier\nconstructor when initializing.",
+                    "type": "Array | Any"
+                }
+            ],
+            "return": {
+                "description": "the augmented object.",
+                "type": "Object"
+            },
+            "todo": [
+                "constructor optional?",
+                "understanding what an instance is augmented with",
+                "best practices for overriding sequestered methods."
+            ],
+            "class": "YUI~oop",
+            "module": "oop"
+        },
+        {
+            "file": "input\\code\\oop\\oop.js",
+            "line": 126,
+            "description": "Applies object properties from the supplier to the receiver.  If\nthe target has the property, and the property is an object, the target\nobject will be augmented with the supplier's value.  If the property\nis an array, the suppliers value will be appended to the target.",
+            "itemtype": "method",
+            "name": "aggregate",
+            "params": [
+                {
+                    "name": "r",
+                    "description": "the object to receive the augmentation.",
+                    "type": "Function"
+                },
+                {
+                    "name": "s",
+                    "description": "the object that supplies the properties to augment.",
+                    "type": "Function"
+                },
+                {
+                    "name": "ov",
+                    "description": "if true, properties already on the receiver\nwill be overwritten if found on the supplier.",
+                    "type": "Boolean"
+                },
+                {
+                    "name": "wl",
+                    "description": "a whitelist.  If supplied, only properties in\nthis list will be applied to the receiver.",
+                    "type": "String[]"
+                }
+            ],
+            "return": {
+                "description": "the extended object.",
+                "type": "Object"
+            },
+            "class": "YUI~oop",
+            "module": "oop"
+        },
+        {
+            "file": "input\\code\\oop\\oop.js",
+            "line": 144,
+            "description": "Utility to set up the prototype, constructor and superclass properties to\nsupport an inheritance strategy that can chain constructors and methods.\nStatic members will not be inherited.",
+            "itemtype": "method",
+            "name": "extend",
+            "params": [
+                {
+                    "name": "r",
+                    "description": "the object to modify.",
+                    "type": "Function"
+                },
+                {
+                    "name": "s",
+                    "description": "the object to inherit.",
+                    "type": "Function"
+                },
+                {
+                    "name": "px",
+                    "description": "prototype properties to add/override.",
+                    "type": "Object"
+                },
+                {
+                    "name": "sx",
+                    "description": "static properties to add/override.",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "the extended object.",
+                "type": "Object"
+            },
+            "class": "YUI~oop",
+            "module": "oop"
+        },
+        {
+            "file": "input\\code\\oop\\oop.js",
+            "line": 185,
+            "description": "Executes the supplied function for each item in\na collection.  Supports arrays, objects, and\nY.NodeLists",
+            "itemtype": "method",
+            "name": "each",
+            "params": [
+                {
+                    "name": "o",
+                    "description": "the object to iterate.",
+                    "type": "Object"
+                },
+                {
+                    "name": "f",
+                    "description": "the function to execute.  This function\nreceives the value, key, and object as parameters.",
+                    "type": "Function"
+                },
+                {
+                    "name": "c",
+                    "description": "the execution context for the function.",
+                    "type": "Object"
+                },
+                {
+                    "name": "proto",
+                    "description": "if true, prototype properties are\niterated on objects.",
+                    "type": "Boolean"
+                }
+            ],
+            "return": {
+                "description": "the YUI instance.",
+                "type": "YUI"
+            },
+            "class": "YUI~oop",
+            "module": "oop"
+        },
+        {
+            "file": "input\\code\\oop\\oop.js",
+            "line": 202,
+            "description": "Executes the supplied function for each item in\na collection.  The operation stops if the function\nreturns true. Supports arrays, objects, and\nY.NodeLists.",
+            "itemtype": "method",
+            "name": "some",
+            "params": [
+                {
+                    "name": "o",
+                    "description": "the object to iterate.",
+                    "type": "Object"
+                },
+                {
+                    "name": "f",
+                    "description": "the function to execute.  This function\nreceives the value, key, and object as parameters.",
+                    "type": "Function"
+                },
+                {
+                    "name": "c",
+                    "description": "the execution context for the function.",
+                    "type": "Object"
+                },
+                {
+                    "name": "proto",
+                    "description": "if true, prototype properties are\niterated on objects.",
+                    "type": "Boolean"
+                }
+            ],
+            "return": {
+                "description": "true if the function ever returns true,\nfalse otherwise.",
+                "type": "Boolean"
+            },
+            "class": "YUI~oop",
+            "module": "oop"
+        },
+        {
+            "file": "input\\code\\oop\\oop.js",
+            "line": 221,
+            "description": "Deep obj/array copy.  Function clones are actually\nwrappers around the original function.\nArray-like objects are treated as arrays.\nPrimitives are returned untouched.  Optionally, a\nfunction can be provided to handle other data types,\nfilter keys, validate values, etc.",
+            "itemtype": "method",
+            "name": "clone",
+            "params": [
+                {
+                    "name": "o",
+                    "description": "what to clone.",
+                    "type": "Object"
+                },
+                {
+                    "name": "safe",
+                    "description": "if true, objects will not have prototype\nitems from the source.  If false, they will.  In this case, the\noriginal is initially protected, but the clone is not completely\nimmune from changes to the source object prototype.  Also, cloned\nprototype items that are deleted from the clone will result\nin the value of the source prototype being exposed.  If operating\non a non-safe clone, items should be nulled out rather than deleted.",
+                    "type": "Boolean"
+                },
+                {
+                    "name": "f",
+                    "description": "optional function to apply to each item in a\ncollection; it will be executed prior to applying the value to\nthe new object.  Return false to prevent the copy.",
+                    "type": "Function"
+                },
+                {
+                    "name": "c",
+                    "description": "optional execution context for f.",
+                    "type": "Object"
+                },
+                {
+                    "name": "owner",
+                    "description": "Owner object passed when clone is iterating\nan object.  Used to set up context for cloned functions.",
+                    "type": "Object"
+                },
+                {
+                    "name": "cloned",
+                    "description": "hash of previously cloned objects to avoid\nmultiple clones.",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "the cloned object.",
+                "type": "Array|Object"
+            },
+            "class": "YUI~oop",
+            "module": "oop"
+        },
+        {
+            "file": "input\\code\\oop\\oop.js",
+            "line": 320,
+            "description": "Returns a function that will execute the supplied function in the\nsupplied object's context, optionally adding any additional\nsupplied parameters to the beginning of the arguments collection the\nsupplied to the function.",
+            "itemtype": "method",
+            "name": "bind",
+            "params": [
+                {
+                    "name": "f",
+                    "description": "the function to bind, or a function name\nto execute on the context object.",
+                    "type": "Function|String"
+                },
+                {
+                    "name": "c",
+                    "description": "the execution context.",
+                    "type": "Object"
+                },
+                {
+                    "name": "args",
+                    "description": "0..n arguments to include before the arguments the\nfunction is executed with.",
+                    "type": "Any",
+                    "multiple": true
+                }
+            ],
+            "return": {
+                "description": "the wrapped function.",
+                "type": "Function"
+            },
+            "class": "YUI~oop",
+            "module": "oop"
+        },
+        {
+            "file": "input\\code\\oop\\oop.js",
+            "line": 345,
+            "description": "Returns a function that will execute the supplied function in the\nsupplied object's context, optionally adding any additional\nsupplied parameters to the end of the arguments the function\nis executed with.",
+            "itemtype": "method",
+            "name": "rbind",
+            "params": [
+                {
+                    "name": "f",
+                    "description": "the function to bind, or a function name\nto execute on the context object.",
+                    "type": "Function|String"
+                },
+                {
+                    "name": "c",
+                    "description": "the execution context.",
+                    "type": "Object"
+                },
+                {
+                    "name": "args",
+                    "description": "0..n arguments to append to the end of\narguments collection supplied to the function.",
+                    "type": "Any",
+                    "multiple": true
+                }
+            ],
+            "return": {
+                "description": "the wrapped function.",
+                "type": "Function"
+            },
+            "class": "YUI~oop",
+            "module": "oop"
+        },
+        {
+            "file": "input\\code\\st\\deferred.js",
+            "line": 77,
+            "description": "解决递延对象，并根据给定的参数调用任何完成的回调函数",
+            "itemtype": "method",
+            "name": "resolve",
+            "params": [
+                {
+                    "name": "result",
+                    "description": "解决传递的结果",
+                    "type": "Object"
+                }
+            ],
+            "example": [
+                "\t\r\n\t    \t\tfunction test(){\r\n\t    \t\t\tvar defer = st.Deferred();\r\n\t    \t\t\tsetTimeout(function(){\r\n\t    \t\t\t\tdefer.resolve(\"test\");\r\n\t    \t\t\t})\r\n\t    \t\t\treturn defer.promise();\r\n\t\r\n\t    \t\t}\r\n\t\r\n\t    \t\tfunction test2(){\r\n\t    \t\t\tvar defer = st.Deferred();\r\n\t    \t\t\tsetTimeout(function(){\r\n\t    \t\t\t\tdefer.resolve(\"test2\");\r\n\t    \t\t\t})\r\n\t    \t\t\treturn defer.promise();\r\n\t\r\n\t    \t\t}\r\n\t\r\n\t    \t\tst.when(test(),test2()).done(function(result,result2){\r\n\t    \t\t\texpect(result).toBe('test');\r\n\t    \t\t\texpect(result2).toBe('test2');\r\n\t    \t\t\t\r\n\t    \t\t})\r\n\t    \t"
+            ],
+            "exampleTitles": [
+                "deferred"
+            ],
+            "class": "Deferred",
+            "module": "Promise"
+        },
+        {
+            "file": "input\\code\\st\\deferred.js",
+            "line": 86,
+            "description": "拒绝延迟对象，并根据给定的参数调用任何失败的回调函数。",
+            "itemtype": "method",
+            "name": "reject",
+            "params": [
+                {
+                    "name": "arg",
+                    "description": "拒绝传递的参数",
+                    "type": "Object"
+                }
+            ],
+            "example": [
+                "\t\r\n\t    \t\tvar defer = st.Deferred();\r\n\t\r\n\t    \t\tfunction test(){\r\n\t    \t\t\tsetTimeout(function(){\r\n\t    \t\t\t\tdefer.reject(\"test\");\r\n\t    \t\t\t})\r\n\t    \t\t\treturn defer.promise();\r\n\t    \t\t}\r\n\t\r\n\t    \t\tst.when(test()).fail(function(result){\r\n\t    \t\t\texpect(result).toBe('test');\r\n\t    \t\t\t\r\n\t    \t\t})\r\n\t    \t"
+            ],
+            "exampleTitles": [
+                "deferred"
+            ],
+            "class": "Deferred",
+            "module": "Promise"
+        },
+        {
+            "file": "input\\code\\st\\deferred.js",
+            "line": 95,
+            "description": "返回契约",
+            "itemtype": "method",
+            "name": "promise",
+            "class": "Deferred",
+            "module": "Promise"
+        },
+        {
+            "file": "input\\code\\st\\deferred.js",
+            "line": 102,
+            "description": "返回契约状态；\n    1. pending: 未完成状态。 \n    2. resolved: 解决状态。 \n    3. rejected: 拒绝的状态。",
+            "itemtype": "method",
+            "name": "state",
+            "class": "Deferred",
+            "module": "Promise"
+        },
+        {
+            "file": "input\\code\\st\\deferred.js",
+            "line": 112,
+            "description": "当延迟成功时调用一个函数或者数组函数。",
+            "itemtype": "method",
+            "name": "done",
+            "params": [
+                {
+                    "name": "callback",
+                    "description": "回调函数或者数组函数",
+                    "type": "Function|array"
+                }
+            ],
+            "class": "Deferred",
+            "module": "Promise"
+        },
+        {
+            "file": "input\\code\\st\\deferred.js",
+            "line": 120,
+            "description": "当延迟失败时调用一个函数或者数组函数。",
+            "itemtype": "method",
+            "name": "fail",
+            "params": [
+                {
+                    "name": "callback",
+                    "description": "回调函数或者数组函数",
+                    "type": "Function|array"
+                }
+            ],
+            "class": "Deferred",
+            "module": "Promise"
+        },
+        {
+            "file": "input\\code\\st\\deferred.js",
+            "line": 128,
+            "description": "当递延对象是解决或拒绝时被调用添加处理程序；",
+            "itemtype": "method",
+            "name": "always",
+            "params": [
+                {
+                    "name": "callback",
+                    "description": "回调函数或者数组函数",
+                    "type": "Function|array"
+                }
+            ],
+            "class": "Deferred",
+            "module": "Promise"
+        },
+        {
+            "file": "input\\code\\st\\deferred.js",
+            "line": 136,
+            "description": "添加处理程序被调用时，递延对象得到解决或者拒绝；",
+            "itemtype": "method",
+            "name": "then",
+            "params": [
+                {
+                    "name": "doneCallback",
+                    "description": "成功回调函数",
+                    "type": "Function"
+                },
+                {
+                    "name": "callback",
+                    "description": "失败回调函数或者数组函数",
+                    "type": "Function"
+                },
+                {
+                    "name": "priority",
+                    "description": "权重；优先级",
+                    "type": "Number"
+                }
+            ],
+            "class": "Deferred",
+            "module": "Promise"
+        },
+        {
+            "file": "input\\code\\st\\deferred.js",
+            "line": 154,
+            "description": "捕获promise的方法，使用st.when调用；",
+            "itemtype": "method",
+            "name": "when",
+            "params": [
+                {
+                    "name": "result",
+                    "description": "单个判断对象或者一组（参数组）判断对象",
+                    "type": "Object|args"
+                }
+            ],
+            "example": [],
+            "exampleTitles": [],
+            "class": "Deferred",
+            "module": "Promise"
+        },
+        {
+            "file": "input\\code\\ui\\uicode.js",
+            "line": 24,
+            "description": "ui初始化方法",
+            "itemtype": "method",
+            "name": "init",
+            "params": [
+                {
+                    "name": "content",
+                    "description": "内容",
+                    "type": "String"
+                }
+            ],
+            "class": "UI",
+            "module": "uiModule"
+        },
+        {
+            "file": "input\\code\\ui\\uicode.js",
+            "line": 32,
+            "description": "渲染方法",
+            "itemtype": "method",
+            "name": "render",
+            "return": {
+                "description": "渲染后的html",
+                "type": "String"
+            },
+            "class": "UI",
+            "module": "uiModule"
+        }
+    ],
+    "warnings": [
+        {
+            "message": "unknown tag: demo",
+            "line": " input\\code\\inherit\\examplemodule.js:50"
+        },
+        {
+            "message": "unknown tag: demo",
+            "line": " input\\code\\st\\deferred.js:15"
+        },
+        {
+            "message": "unknown tag: demo",
+            "line": " input\\code\\st\\deferred.js:77"
+        },
+        {
+            "message": "unknown tag: demo",
+            "line": " input\\code\\st\\deferred.js:86"
+        },
+        {
+            "message": "unknown tag: demo",
+            "line": " input\\code\\st\\deferred.js:154"
+        },
+        {
+            "message": "unknown tag: content",
+            "line": " input\\code\\ui\\uicode.js:10"
+        },
+        {
+            "message": "unknown tag: demo",
+            "line": " input\\code\\ui\\uicode.js:10"
+        },
+        {
+            "message": "unknown tag: demo",
+            "line": " input\\code\\ui\\uicode.js:10"
+        },
+        {
+            "message": "unknown tag: show",
+            "line": " input\\code\\ui\\uicode.js:10"
+        }
+    ]
+}

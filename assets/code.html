@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>SmartJS - Demo</title>
+    <meta charset="utf-8" />
+
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="codemirror/lib/codemirror.css">
+    <link rel="stylesheet" href="codemirror/addon/dialog/dialog.css">
+    <link rel="stylesheet" href="codemirror/addon/fold/foldgutter.css">
+    <link rel="stylesheet" href="codemirror/addon/dialog/dialog.css">
+    <link rel="stylesheet" href="codemirror/theme/monokai.css">
+    <link rel="stylesheet" href="codemirror/addon/lint/lint.css">
+    <link rel="stylesheet" href="codemirror/addon/hint/show-hint.css">
+
+    <link rel="stylesheet" href="css/codeDemo.css">
+    <LINK href="favicon.png" type="image/x-icon" rel=icon> 
+
+    <script src="codemirror/lib/codemirror.js"></script>
+
+    <script src="codemirror/addon/lint/jshint.js"></script>
+    <script src="codemirror/addon/lint/lint.js"></script>
+    <script src="codemirror/addon/lint/javascript-lint.js"></script>
+    <script src="codemirror/addon/hint/javascript-hint.js"></script>
+
+    <script src="codemirror/addon/search/searchcursor.js"></script>
+    <script src="codemirror/addon/search/search.js"></script>
+    <script src="codemirror/addon/dialog/dialog.js"></script>
+    <script src="codemirror/addon/edit/matchbrackets.js"></script>
+    <script src="codemirror/addon/edit/closebrackets.js"></script>
+    <script src="codemirror/addon/comment/comment.js"></script>
+    <script src="codemirror/addon/wrap/hardwrap.js"></script>
+    <script src="codemirror/addon/fold/foldcode.js"></script>
+    <script src="codemirror/addon/fold/brace-fold.js"></script>
+
+    <script src="codemirror/keymap/sublime.js"></script>
+
+    <script src="codemirror/addon/hint/show-hint.js"></script>
+    <script src="codemirror/addon/hint/xml-hint.js"></script>
+    <script src="codemirror/addon/hint/html-hint.js"></script>
+
+    <script src="codemirror/mode/javascript.js"></script>
+    <script src="codemirror/mode/xml.js"></script>
+    <script src="codemirror/mode/css.js"></script>
+    <script src="codemirror/mode/htmlmixed.js"></script>
+
+    <script src="vendor/jquery/jquery-1.8.2.min.js"></script>
+
+    
+
+</head>
+
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">
+                    SmartDoc Demo - <span id='mod'></span>
+                </a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+               <div class="code-toolbar">
+                    <button id='btnRun' class="btn btn-success">Run</button>
+                    <button id='btnReset' class="btn btn-success">Reset</button>
+                    <button id='btnOpen' class="btn btn-success">View In New Window</button>
+               </div> 
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid main">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class='htmlInput'>
+                    <textarea id="txtHtml"></textarea>
+                </div>
+                <div class='jsInput'>
+                    <textarea id="txtCode"></textarea>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="alert alert-info" role="alert">
+                    <ul>
+                        <li>编辑器操作模式同sublime；同时键入“Ctr + J”是智能感知;</li>
+                        <li>使用expect方法可以将测试预期结果输出(使用接口大体与jasmine相同)；例如：expect(result,'结果')</li>
+                        <li>使用log可以打印结果；例如：log(result');</li>
+                </div>
+                </ul>
+                <h2>Result</h2>
+                <iframe id="render">
+                </iframe>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script src="js/code.js"></script><script src="http://code.jquery.com/jquery-1.11.0.min.js"></script><script src="res/uicode.js"></script>
