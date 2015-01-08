@@ -5,6 +5,8 @@ SmartDoc
 
 详细介绍见我的博客: [JS文档和Demo自动化生成工具 - SmartDoc](http://www.cnblogs.com/zhh8077/p/4010991.html)和[注释编写说明](http://www.cnblogs.com/zhh8077/p/4011769.html)
 
+[生成示例地址](http://zhh77.github.io/smartDoc/)
+
 license : BSD
 
 0.1.1 特性 
