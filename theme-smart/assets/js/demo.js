@@ -1,7 +1,7 @@
 (function() {
-    var logs = document.getElementById('__logs');
+    var logs = document.getElementById('__logs'),win = window;
 
-    window.__st_render = function (html,code) {
+    win.__st_render = function (html,code) {
         html && (document.getElementById('__show').innerHTML = html);
         logs.innerHTML = '';
 

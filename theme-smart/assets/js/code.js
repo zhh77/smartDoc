@@ -35,7 +35,7 @@ $(function() {
 
     code = window.name;
     html = getCode('html');
-    code = getCode('script') || code;
+    code = getCode('script') ||  (html && code);
 
     function getCode(type) {
         var index = code.indexOf('<'+ type + '>');

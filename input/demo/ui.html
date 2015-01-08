@@ -1,0 +1,33 @@
+<html>
+<style>
+     #container {
+          color:#fff;
+          width:200px;
+          height:30px;
+          line-height: 30px;
+          border-radius: 5px;
+          background: #5bc0de;
+          text-align: center;
+     }
+
+</style>
+     <h2>UI测试1</h2>
+     <div id='container'>html render</div>
+</html>
+<script>
+ $(function(){
+       //ui code输出
+          var ui = new UI("UI测试");
+          $('#container').text(ui.render());
+
+          //log输出
+          log('this is a message');
+
+          //expect === 输出
+          expect(1).toBe(true);
+
+          //expect == 输出
+          expect(1).toEqual(true);
+     });
+   
+</script>

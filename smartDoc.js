@@ -4,8 +4,15 @@ exports.build = function(config, callback) {
     var Y = require('yuidocjs'),
         fs = require("fs"),
         path = require('path'),
+        demoBuilder,
         stat = fs.stat,
-        themeDir = path.dirname(fs.realpathSync(__filename)) + "/theme-smart/";
+        basePath = path.dirname(fs.realpathSync(__filename)),
+        themeDir;
+
+    var defaultThemes = {
+        'default': basePath + '/theme-smart/',
+        'ui': basePath + '/theme-smart-ui/'
+    };
 
     extendYUIDoc();
 
@@ -25,12 +32,38 @@ exports.build = function(config, callback) {
             console.log('The Options of smartDoc is not be defined!');
             return;
         }
-        options = Y.mix(options, {
+
+        //混入默认设置
+        config = options = Y.mix(options, {
+            //代码扫描路径
             paths: ['src/'],
+            //文档输出文件夹
             outdir: 'doc/',
-            themedir: themeDir,
-            helpers: [themeDir + "helpers/helpers.js"]
+            theme: 'default',
+            //主题目录
+            //themedir: themeDir,
+            //辅助js文件地址
+            //helpers: [themeDir + "helpers/helpers.js"],
+            //demo扫描目录
+            demoDir: "",
+            //demo生成器地址
+            demoBuilder: './demoBuilder.js',
+            //demo代码生成器地址
+            codeLoader: './jasmineLoader.js'
         });
+
+        //主题判断
+        if (config.themedir) {
+             themeDir = config.themedir;
+        } else {
+            //判断是否默认主题
+            themeDir = config.themedir = defaultThemes[config.theme] || defaultThemes['default'];
+        }
+
+        if (!config.helpers)
+            config.helpers = [themeDir + "helpers/helpers.js"];
+           
+        demoBuilder = require(config.demoBuilder);
 
         try {
             json = (new Y.YUIDoc(options)).run();
@@ -41,7 +74,6 @@ exports.build = function(config, callback) {
         options = Y.Project.mix(json, options);
 
         var builder = new Y.DocBuilder(options, json);
-       
 
         var starttime = Date.now();
         console.log('Start SmartDoc compile...');
@@ -49,7 +81,7 @@ exports.build = function(config, callback) {
         console.log('Output: ' + options.outdir);
 
         builder.compile(function() {
-            buildDocConfig(builder.data,builder._meta,options);
+            buildDocConfig(builder.data, builder._meta, options);
 
             builder.writeDemo(function() {
                 callback && callback();
@@ -58,7 +90,7 @@ exports.build = function(config, callback) {
         });
     }
 
-    function buildDocConfig(data,meta,options) {
+    function buildDocConfig(data, meta, options) {
         var items = [];
 
         Y.each(data.modules, function(item) {
@@ -78,19 +110,20 @@ exports.build = function(config, callback) {
         data.classitems.forEach(function(item) {
             item.name && items.push({
                 type: item.itemtype,
-                className : item['class'],
+                className: item['class'],
                 name: item.name
             });
         })
 
         var config = {
-            filterItems : items
+            filterItems: items
         }
 
         fs.appendFileSync(options.outdir + 'assets/js/config.js', "window['__docConfig'] = " + JSON.stringify(config)) + ";";
     }
 
     function extendYUIDoc() {
+        //重新模块生成
         Y.DocBuilder.prototype.populateModules = function(opts) {
             var self = this;
             opts.meta.modules = [];
@@ -144,25 +177,61 @@ exports.build = function(config, callback) {
             opts.meta.allModules.sort(this.nameSort);
             return opts;
         }
+
+        //添加demo写入功能
+        Y.DocBuilder.prototype.writeDemo = function(cb) {
+            var self = this,
+                stack = new Y.Parallel();
+
+            Y.log('Preparing demo.html', 'info', 'builder');
+
+            render(self, stack.add(function(html, view) {
+                stack.html = html;
+                stack.view = view;
+                Y.Files.writeFile(path.join(self.options.outdir + 'assets/', 'demo.html'), html, stack.add(function() {}));
+                Y.Files.writeFile(path.join(self.options.outdir + 'assets/', 'show.html'), html + "<script src='js/show.js'></script>", stack.add(function() {}));
+            }));
+
+            stack.done(function(html, view) {
+                Y.log('Writing demo.html', 'info', 'builder');
+                cb(stack.html, stack.view);
+            });
+        }
+
+        extendYUIBuilder();
     }
 
-    Y.DocBuilder.prototype.writeDemo = function(cb) {
-        var self = this,
-            stack = new Y.Parallel();
+    function extendYUIBuilder(){
+        var _parseCode =  Y.DocBuilder.prototype._parseCode;
 
-        Y.log('Preparing demo.html', 'info', 'builder');
+        Y.DocBuilder.prototype._parseCode = function(html){
+            return '<div class="stdoc-code">' + _parseCode.call(this,html) + "</div>";
+        }
 
-        render(self, stack.add(function(html, view) {
-            stack.html = html;
-            stack.view = view;
-            Y.Files.writeFile(path.join(self.options.outdir + 'assets/', 'demo.html'), html, stack.add(function() {}));
-            Y.Files.writeFile(path.join(self.options.outdir + 'assets/', 'show.html'), html + "<script src='js/show.js'></script>", stack.add(function() {}));
-        }));
+        //扩展demo标签处理
+        Y.DocParser.DIGESTERS.demo = function(tagname, value, target, block) {
+            var content = target["example"],
+                data,titles = target["exampleTitles"];
 
-        stack.done(function(html, view) {
-            Y.log('Writing demo.html', 'info', 'builder');
-            cb(stack.html, stack.view);
-        });
+            if(!content)
+                content = target["example"] = [];
+
+             if(!titles)
+                titles = target["exampleTitles"] = [];
+
+            if (value) {
+                var data = demoBuilder.build(value, config, target);
+                if(data && data.code){
+                    content.push(data.code);
+                    titles.push(data.title);
+                }
+            }
+        }
+
+        //扩展demo标签处理
+        Y.DocParser.DIGESTERS.show = function(tagname, value, target, block) {
+            target["show"] = true;
+        }
     }
 
     function isJS(file) {
@@ -222,6 +291,11 @@ exports.build = function(config, callback) {
     }
 
     function copyDir(addRes, src, dst) {
+         if (!fs.existsSync(src))
+        {
+            console.error("demo加载目录不存在：" + src);
+            return;
+        }
         if (!fs.existsSync(dst))
             fs.mkdirSync(dst);
 
@@ -235,6 +309,12 @@ exports.build = function(config, callback) {
     }
 
     function copyRes(addRes, fileName, src, dst) {
+         if (!fs.existsSync(src))
+        {
+            console.error("demo加载文件不存在：" + src);
+            return;
+        }
+
         if (addRes('res/' + fileName)) {
             var _dst = dst + '/' + fileName,
                 readable, writable;

@@ -1,10 +1,13 @@
 module.exports = {
     //扫描的文件路径
-    paths: ['input/'],
-
+    paths: ['input/code/'],
+    demoDir:"input/demo/",
     //文档页面输出路径
     outdir: 'doc/',
-
+    //内置主题
+    // theme:'ui',
+    //自定义主题目录
+    //themedir: 'theme-smart-ui/',
     //项目信息配置
     project: {
 
@@ -34,7 +37,7 @@ module.exports = {
     },
     //demo页面需要加载的js库
     demo: {
-        paths : ['input/ui/uicode.js'],
+        paths : ['input/code/ui/uicode.js'],
         link : ['http://code.jquery.com/jquery-1.11.0.min.js'] 
     }
 };

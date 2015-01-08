@@ -42,23 +42,17 @@
             </div>
         </div>
     </nav>
-<div class="container">
-    <div class="row">
-        <div class="col-sm-3">
-	    {{>sidebar}}
-        </div>
-        <div class="col-sm-9">
-            <!-- {{>options}} -->
-            <div class="apidocs">
-                <div id="docs-main">
-                    <div class="content">
-                        {{>layout_content}}
-                    </div>
+    {{>sidebar}}
+    <div class="stdoc-content">
+        <!-- {{>options}} -->
+        <div class="apidocs">
+            <div id="docs-main">
+                <div class="content">
+                    {{>layout_content}}
                 </div>
             </div>
         </div>
     </div>
-</div>
 <a id="gotoTop" class='well well-small' href='#'>
     Top
 </a>

@@ -4,9 +4,9 @@ $(function() {
 
     //nav init
     function navInit() {
-        var sidebar = $('#sidebar');
-        sidebar.find(' > dl > dt > span').click(function() {
-            $(this).toggleClass('glyphicon-minus').parent().next().toggleClass('hide');
+        var sidebar = $('#sidebar_list');
+        sidebar.find(' > dt > span').click(function() {
+            $(this).toggleClass('glyphicon-plus').parent().next().toggleClass('hide');
         })
 
         $('#txtSearch').keyup(function(e) {
@@ -20,9 +20,8 @@ $(function() {
             current = sidebar.find('a[href$="' + name + '"]:first').addClass('active').parent().parent().parent();
 
         if (current.hasClass('hide')) {
-            current.removeClass('hide').prev().children('span').addClass('glyphicon-minus');
+            current.removeClass('hide').prev().children('span').removeClass('glyphicon-plus');
         }
-
     }
 
     function filter(list, text) {
@@ -46,7 +45,7 @@ $(function() {
                 mod.toggleClass('hide', !modMatch);
             })
         } else {
-            list.find('.hide').removeClass('hide');
+            list.parent().find('.hide').removeClass('hide');
         }
     }
 
@@ -105,15 +104,95 @@ $(function() {
         }
     }
 
+    var html_ifr = '<iframe class="example-show" />';
+
+    function toggleDemoTab(target) {
+        target.siblings('.active').removeClass('active')
+        target.addClass('active');
+    }
+
     function initDemoView() {
-        $('.btn-viewDemo').click(function() {
-            var code = $(this).prev().text().trim();
-            window.open('../assets/show.html', code);
-        }).next().click(function() {
-            var btn = $(this),
-                code = btn.prev().prev().text().trim();
-            window.open('../assets/code.html?n=' + btn.parent().parent().children(':first').text(), code);
-        })
+        //demo tab切换处理
+        var list = $('.example-list').on('click', 'li', function(i) {
+            var title = $(this),
+                active;
+            if (!title.hasClass('active')) {
+                active = title.parent().next().children(':eq(' + title.attr("_no") + ')');
+                toggleDemoTab(title);
+                toggleDemoTab(active);
+                loadShowDemo(active);
+            }
+        });
+
+        //处理初始化代码显示
+        list.next().each(function(){
+            var demo = $(this).children(':first').addClass('active');
+             loadShowDemo(demo);
+        });
+
+        $('.btn-viewDemo').click(openDemo).next().click(editDemo);
+    }
+    function loadShowDemo(code){
+        if(code.hasClass('demo-loaded'))
+            return;
+
+        var codeText = code.text().trim(),
+            ifr;
+
+        if (code.parent().hasClass('showdemo')) {
+            ifr = $(html_ifr).load(loadDemo);
+            code.prepend(ifr);
+            ifr.attr('src', '/assets/show.html');
+        }
+        code.addClass('demo-loaded');
+    }
+    function buildShowDemo(code, no) {
+        var codeText = code.text().trim(),
+            ifr;
+
+        if (code.parent().hasClass('showdemo')) {
+            ifr = $(html_ifr).load(loadDemo);
+            code.before(ifr);
+            ifr.attr('src', '/assets/show.html');
+        }
+
+        (ifr || code).attr('id', no);
+    }
+
+    function openDemo() {
+        var code = $(this).prev().children('.active').text().trim();
+        window.open('../assets/show.html', code);
+    }
+
+    function editDemo() {
+        var btn = $(this),
+            code = btn.prev().prev().children('.active').text().trim();
+        window.open('../assets/code.html?n=' + btn.parent().parent().children(':first').text(), code);
+    }
+
+    function loadDemo() {
+        var ifr = $(this),
+            code = ifr.next().text().trim(),
+            html, js;
+
+        ifr.addClass('demo-loaded');
+
+        var win = ifr[0].contentWindow;
+        if (win && win.__st_render) {
+            html = getCode(code, 'html');
+            js = getCode(code, 'script') || (html && code);
+
+            win.__st_render(html, js);
+            ifr.height(win.document.body.scrollHeight);
+        }
+    }
+
+    function getCode(code, type) {
+        var index = code.indexOf('<' + type + '>');
+
+        if (index > -1) {
+            return code.substring(index + type.length + 2, code.indexOf('</' + type + '>'));
+        }
     }
 
     function initFilterApi() {
@@ -128,19 +207,17 @@ $(function() {
         else
             path = "../";
 
-        var timer,curItem;
+        var timer, curItem;
         txtSearchAPI.keyup(function(e) {
             var code = e.keyCode;
             if (code === 38 || code === 40) {
                 moveItem(e.keyCode);
-            } 
-            else if(code === 13) {
-                if(filterList.css('display') === 'none')
+            } else if (code === 13) {
+                if (filterList.css('display') === 'none')
                     filterList.show();
-                else if(curItem)
-                   location.href = curItem.children().attr('href');
-            }
-            else {
+                else if (curItem)
+                    location.href = curItem.children().attr('href');
+            } else {
                 if (timer)
                     clearTimeout(timer);
 
@@ -155,18 +232,18 @@ $(function() {
             }, 300);
         })
 
-        function moveItem(code){
-            var next,isNext = code === 40;
-            if(curItem){
+        function moveItem(code) {
+            var next, isNext = code === 40;
+            if (curItem) {
                 curItem.removeClass('active');
                 curItem = isNext ? curItem.next() : curItem.prev();
-                if(curItem.length === 0)
+                if (curItem.length === 0)
                     curItem = null;
             }
 
-            if(!curItem)
+            if (!curItem)
                 curItem = filterList.children(isNext ? ':first' : ':last')
-           
+
             curItem.addClass('active');
         }
 
@@ -193,7 +270,7 @@ $(function() {
                 filterList.html(result.join('')).show();
                 curItem = filterList.children(':first');
 
-                if(curItem.length)
+                if (curItem.length)
                     curItem.addClass('active')
                 else
                     curItem = null;
@@ -216,4 +293,14 @@ $(function() {
     function checkPath(type) {
         return location.pathname.indexOf(type) > -1;
     }
+
+    function autoHeight() {
+        var leftNav = $('#sidebar_list'),
+            top = leftNav.offset().top - window.scrollY;
+
+        leftNav.height($(window).height() - top);
+    }
+
+    $(window).resize(autoHeight);
+    autoHeight();
 });

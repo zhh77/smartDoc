@@ -202,14 +202,21 @@
         </div>
     {{/return}}
 
-    {{#example}}
+    {{#if example}}
         <div class="example">
             <h4>Example:</h4>
-            <div class="example-content">
-                {{{.}}}
+            <ul class="nav nav-tabs example-list">
+                {{#each exampleTitles}}
+                <li role="presentation" {{#if @index}} {{else}} class="active" {{/if}} _no='{{@index}}'> <a>{{this}}</a></li>
+                {{/each}}
+            </ul>
+
+            <div class="example-content {{#if show}} showdemo {{/if}}">
+                {{{example}}}
             </div>
-            <button class="btn-viewDemo btn btn-success" type="button">view demo</button>
-            <button class="btn-runDemo btn btn-success" type="button">edit code</button>
+
+             <button class="btn btn-info btn-viewDemo" type="button">view demo</button>
+            <button class="btn btn-info btn-editDemo" type="button">edit code</button>
         </div>
-    {{/example}}
+    {{/if}}
 </div>

@@ -1,0 +1,22 @@
+<html>
+<style>
+     #container {
+          color:#fff;
+          width:200px;
+          height:30px;
+          line-height: 30px;
+          border-radius: 5px;
+          background: #f0ad4e;
+          text-align: center;
+     }
+
+</style>
+
+     <h2>UI测试2</h2>
+     <div id='container'></div>
+</html>
+<script>
+     //ui code输出
+     var ui = new UI("UI测试2");
+     document.getElementById('container').innerText = ui.render();
+</script>

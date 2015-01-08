@@ -7,7 +7,16 @@ SmartDoc
 
 license : BSD
 
-特性 
+0.1.1 特性 
+--------------------
+    * 加入@demo配置项，看可以动态抓取html和js的内容作为@example，同时支持扩展@demo读取
+    * 支持jasmine测试js文件的单元代码抓取为@example
+    * 实现多个example显示和tab切换
+    * 加入@show配置项来控制直接显示example效果
+    * 主题改版
+    * 去除@attribute属性设置，统一使用@property
+
+0.1.0 特性 
 --------------------
     * 基于Bootstrp3构建，排版和样式美化
     * 支持html和js的Demo生成,与查看

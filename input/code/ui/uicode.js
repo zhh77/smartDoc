@@ -6,31 +6,15 @@
     @module uiModule
 */
 (function() {
-
+     
 	 /**
      * ui测试类； 
      * @class UI
      * @constructor
      * @content {string} type 内容
-     * @example
-     * 		<html>
-     * 			<div id='container'>html render</div>
-     * 		</html>
-     * 		<script>
-     *
-     * 			//ui code输出
-     *              var ui = new UI("UI测试");
-     * 			$('#container').append(ui.render());
-     * 			
-     *    		//log输出
-     * 			log('this is a message');
-     *
-     * 			//expect === 输出
-     * 			expect(1).toBe(true);
-     *
-     * 			//expect == 输出
-     * 			expect(1).toEqual(true);
-     * 		</script>
+     * @demo ui.html
+     * @demo ui2.html {ui测试2}
+     * @show true
      */		
 	function UI(content){
 		this.init(content);

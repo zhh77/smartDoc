@@ -5,11 +5,12 @@
       {{{classDescription}}}
  </div>
 
-<div class="well well-small sign-left2" id="classesItems">
-    {{#if methods}}
-        <div class="index-section methods">
+<div class="well well-small sign-left2 container-fluid" id="classesItems">
+    <div class="row">
+    
+        <div class="index-section methods col-sm-4">
             <h3>Methods</h3>
-
+            {{#if methods}}
             <ul class="index-list methods{{#if extends}} extends{{/if}}">
                 {{#methods}}
                     <li class="index-item method{{#if access}} {{access}}{{/if}}{{#if deprecated}} deprecated{{/if}}{{#if overwritten_from}} inherited{{/if}}{{#if extended_from}} inherited{{/if}}">
@@ -24,13 +25,12 @@
                     </li>
                 {{/methods}}
             </ul>
+            {{/if}}
         </div>
-    {{/if}}
-
-    {{#if properties}}
-        <div class="index-section properties">
+    
+        <div class="index-section properties col-sm-4">
             <h3>Properties</h3>
-
+            {{#if properties}}
             <ul class="index-list properties{{#if extends}} extends{{/if}}">
                 {{#properties}}
                     <li class="index-item property{{#if access}} {{access}}{{/if}}{{#if deprecated}} deprecated{{/if}}{{#if overwritten_from}} inherited{{/if}}{{#if extended_from}} inherited{{/if}}">
@@ -45,27 +45,12 @@
                     </li>
                 {{/properties}}
             </ul>
+            {{/if}}
         </div>
-    {{/if}}
-
-    {{#if attrs}}
-        <div class="index-section attrs">
-            <h3>Attributes</h3>
-
-            <ul class="index-list attrs{{#if extends}} extends{{/if}}">
-                {{#attrs}}
-                    <li class="index-item attr{{#if access}} {{access}}{{/if}}{{#if deprecated}} deprecated{{/if}}{{#if overwritten_from}} inherited{{/if}}{{#if extended_from}} inherited{{/if}}">
-                        <a href="#" data-tabid="#attribute" data-anchor="#attribute_{{name}}" data-tablink="{{name}}">{{name}}</a>
-                    </li>
-                {{/attrs}}
-            </ul>
-        </div>
-    {{/if}}
-
-    {{#if events}}
-        <div class="index-section events">
+    
+        <div class="index-section events col-sm-4">
             <h3>Events</h3>
-
+            {{#if events}}
             <ul class="index-list events{{#if extends}} extends{{/if}}">
                 {{#events}}
                     <li class="index-item event{{#if access}} {{access}}{{/if}}{{#if deprecated}} deprecated{{/if}}{{#if overwritten_from}} inherited{{/if}}{{#if extended_from}} inherited{{/if}}">
@@ -80,8 +65,9 @@
                     </li>
                 {{/events}}
             </ul>
+             {{/if}}
         </div>
-    {{/if}}
+    </div>
 </div>
 
 <div>
@@ -93,9 +79,6 @@
         {{#if properties}}
             <li><a data-toggle="tab" href="#property">Properties</a></li>
         {{/if}}
-        {{#if attrs}}
-            <li><a data-toggle="tab" href="#attribute">Attributes</a></li>
-        {{/if}}
         {{#if events}}
             <li><a data-toggle="tab" href="#event">Events</a></li>
         {{/if}}
@@ -103,7 +86,7 @@
 
     <div class="tab-content">
         <div id="class" class="tab-pane active">
-           <div class="well well-small classDetail sign-left1">
+            <div class="well well-small classDetail sign-left1">
             {{#if uses}}
                 <div class="uses">
                     Uses
@@ -177,16 +160,6 @@
                 {{#properties}}
                     {{>props}}
                 {{/properties}}
-            </div>
-        {{/if}}
-
-        {{#if attrs}}
-            <div id="attribute" class="tab-pane">
-                <h2 class="off-left">Attributes</h2>
-
-                {{#attrs}}
-                    {{>attrs}}
-                {{/attrs}}
             </div>
         {{/if}}
 

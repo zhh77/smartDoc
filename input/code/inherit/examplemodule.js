@@ -50,7 +50,7 @@ YUI.add('examplemodule', function (Y) {
                 /**
                 * Overwritten method see {{#crossLink "mywidget.SuperWidget"}}{{/crossLink}}
                 * also see {{#crossLink "mywidget.SuperWidget/myMethod"}}{{/crossLink}}
-                * This is also a test {{#davglass "Foo"}}{{/davglass}}
+                * This is also a test
                 *
                 * ```javascript
                 *
@@ -59,10 +59,7 @@ YUI.add('examplemodule', function (Y) {
                 * ```
                 *
                 * @method getTargets3
-                * @example
-                *
-                *     var bar;
-                *
+                * @demo inherit/getTargets3.js
                 */
 
                 /**
@@ -75,6 +72,10 @@ YUI.add('examplemodule', function (Y) {
                 * Override Attribute
                 * @attribute focused3
                 * @required
+                * @example 
+                *         {
+                *             a:1
+                *         }
                 */
 
                 /**
