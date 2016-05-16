@@ -85,7 +85,7 @@ docConfig配置项说明
             link : ['http://code.jquery.com/jquery-1.11.0.min.js'],
 
             //文件复制路径; 将目下的资源复制到doc生成目录中，并在deom页面引用
-            paths : ['input/code/ui/uicode.js','input/']
+            paths : ['input/code/ui/uicode.js','input/'],
 
             //是否开启在code编辑器中的自动完成功能(会将link和paths的引入加入)；默认开启；
             autoComplete : true
